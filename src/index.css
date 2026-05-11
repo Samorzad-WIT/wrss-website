@@ -32,9 +32,18 @@
 #root {
   width: 100%;
   min-height: 100svh;
+}
+
+.app-wrapper {
   display: flex;
   flex-direction: column;
+  min-height: 100svh;
 }
+
+main {
+  flex: 1;
+}
+
 
 body {
   margin: 0;
@@ -78,6 +87,43 @@ body {
   gap: 20px;
 }
 
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--accent);
+    padding: 1rem;
+    gap: 10px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
 .nav-links a {
   color: white;
   text-decoration: none;
@@ -90,6 +136,7 @@ body {
 .nav-links a:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
 
 .container {
   max-width: 1000px;
@@ -469,4 +516,185 @@ p {
 .card-icon-box.accent { background: var(--accent-bg); color: var(--accent); }
 .card-icon-box.green { background: rgba(15, 110, 86, 0.1); color: #0F6E56; }
 .card-icon-box.amber { background: rgba(133, 79, 11, 0.1); color: #854F0B; }
-.card-icon-box.gray { background: white; border: 1px dashed var(--border); color: var(--text); font-size: 24px; }
+/* Sekcje Home */
+.hero-section {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.section-container {
+  padding: 4rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-container.white {
+  background: white;
+}
+
+.section-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-grid {
+  align-items: start;
+  marginTop: 2rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.stat-card {
+  background: var(--accent-bg);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--accent);
+  opacity: 0.8;
+  margin: 0;
+}
+
+.member-card-content {
+  padding: 16px;
+  text-align: center;
+}
+
+.member-avatar {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 10px;
+  padding: 0;
+}
+
+.member-name {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 2px 0;
+  color: var(--text-h);
+}
+
+.member-role {
+  font-size: 11px;
+  color: var(--accent);
+  margin: 0 0 4px 0;
+}
+
+.member-quote {
+  font-size: 10px;
+  color: var(--text);
+  opacity: 0.6;
+  marginTop: 8px;
+  font-style: italic;
+}
+
+.events-filter {
+  display: flex;
+  gap: 6px;
+}
+
+.filter-btn {
+  font-size: 12px;
+  padding: 5px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+}
+
+.filter-btn.outline {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: none;
+}
+
+.pdf-viewer-container {
+  width: 100%;
+  height: 800px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.contact-card-content {
+  padding: 24px;
+  text-align: center;
+}
+
+.contact-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.tools-layout {
+  min-height: 70vh;
+  padding: 4rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tools-back-link {
+  margin-bottom: 2rem;
+}
+
+.tool-card {
+  padding: 16px !important;
+  text-align: center;
+}
+
+.tool-card.placeholder {
+  background: var(--bg);
+  border-style: dashed;
+}
+
+.tool-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.tool-card-desc {
+  font-size: 11px;
+  color: var(--text);
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.tool-card-btn {
+  text-decoration: none;
+  display: block;
+  padding: 6px;
+}
+
