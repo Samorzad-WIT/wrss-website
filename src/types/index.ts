@@ -15,6 +15,7 @@ export interface Event {
   date: string;
   status: 'past' | 'upcoming';
   images: string[];
+  imageUrl?: string;
   isCyclic: boolean;
 }
 

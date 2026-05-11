@@ -8,7 +8,8 @@ export const events: Event[] = [
     date: "Cyklicznie (co semestr)",
     status: "upcoming",
     images: [],
-    isCyclic: true
+    isCyclic: true,
+    imageUrl: "/images/events/event1.svg"
   },
   {
     id: 2,
@@ -17,7 +18,8 @@ export const events: Event[] = [
     date: "Cyklicznie",
     status: "upcoming",
     images: [],
-    isCyclic: true
+    isCyclic: true,
+    imageUrl: "/images/events/event1.svg"
   },
   {
     id: 3,
@@ -26,7 +28,8 @@ export const events: Event[] = [
     date: "Cyklicznie (lato)",
     status: "upcoming",
     images: [],
-    isCyclic: true
+    isCyclic: true,
+    imageUrl: "/images/events/event1.svg"
   },
   {
     id: 4,
@@ -35,7 +38,8 @@ export const events: Event[] = [
     date: "Cyklicznie",
     status: "past",
     images: [],
-    isCyclic: true
+    isCyclic: true,
+    imageUrl: "/images/events/event1.svg"
   },
   {
     id: 5,
@@ -44,7 +48,8 @@ export const events: Event[] = [
     date: "Cyklicznie",
     status: "past",
     images: [],
-    isCyclic: true
+    isCyclic: true,
+    imageUrl: "/images/events/event1.svg"
   },
   {
     id: 6,
@@ -53,7 +58,8 @@ export const events: Event[] = [
     date: "Cyklicznie",
     status: "upcoming",
     images: [],
-    isCyclic: true
+    isCyclic: true,
+    imageUrl: "/images/events/event1.svg"
   },
   {
     id: 7,
@@ -62,7 +68,8 @@ export const events: Event[] = [
     date: "Cyklicznie",
     status: "upcoming",
     images: [],
-    isCyclic: true
+    isCyclic: true,
+    imageUrl: "/images/events/event1.svg"
   },
   {
     id: 8,
@@ -71,6 +78,7 @@ export const events: Event[] = [
     date: "Cyklicznie",
     status: "upcoming",
     images: [],
-    isCyclic: true
+    isCyclic: true,
+    imageUrl: "/images/events/event1.svg"
   }
 ];

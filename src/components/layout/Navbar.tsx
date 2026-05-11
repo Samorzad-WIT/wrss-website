@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import logoBiale from '../../assets/logos/WRSS WIT Logo Wektor Białe.svg';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,9 +12,9 @@ export default function Navbar() {
     <header className="navbar-container">
       <nav className="navbar">
         <div className="nav-logo">
-          <Link to="/" onClick={closeMenu} style={{ color: 'white', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <img src="/favicon.svg" alt="Logo" className="logo-img" />
-            <span>Samorząd WIT</span>
+          <Link to="/" onClick={closeMenu} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <img src={logoBiale} alt="WRSS WIT Logo" className="logo-img" />
+            <span>WRSS <strong>WIT</strong></span>
           </Link>
         </div>
 
@@ -22,19 +23,14 @@ export default function Navbar() {
         </button>
 
         <div className={`nav-links ${isOpen ? 'active' : ''}`}>
-          <a href="/#hero" onClick={closeMenu}>Start</a>
           <a href="/#o-nas" onClick={closeMenu}>O nas</a>
-          <a href="/#czlonkowie" onClick={closeMenu}>Członkowie</a>
           <a href="/#wydarzenia" onClick={closeMenu}>Wydarzenia</a>
-          <a href="/#kalendarz" onClick={closeMenu}>Kalendarz</a>
           <a href="/#informator" onClick={closeMenu}>Informator</a>
-          <a href="/#kontakt" onClick={closeMenu}>Kontakt</a>
+          <a href="/#rekrutacja" onClick={closeMenu}>Rekrutacja</a>
           
-          <div style={{ position: 'relative', display: 'inline-block' }} className="dropdown">
-            <Link to="/narzedzia" onClick={closeMenu} style={{ fontWeight: 'bold' }}>Narzędzia ▾</Link>
-          </div>
-          
-          <a href="https://discord.com/invite/kEyNeH32" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>Discord</a>
+          <a href="/#narzedzia" onClick={closeMenu} className="btn-nav">
+             ⚙️ Narzędzia ▾
+          </a>
         </div>
       </nav>
     </header>

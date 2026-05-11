@@ -1,11 +1,18 @@
 export default function Hero() {
   return (
     <section id="hero" className="hero-section">
-      <h1 className="title">Witamy na stronie Samorządu!</h1>
-      <p className="subtitle">Razem tworzymy lepszą społeczność akademicką na WIT.</p>
-      <div className="hero-buttons">
-        <a href="#o-nas" className="btn-primary">Poznaj nas lepiej</a>
-        <a href="https://discord.com/invite/kEyNeH32" target="_blank" rel="noopener noreferrer" className="btn-secondary">Dołącz do Discorda</a>
+      <div className="hero-content">
+        <h1 className="hero-title">WITaj w <span>WRSS</span> <strong>W4N</strong></h1>
+        <p className="hero-subtitle">
+          Wydziałowa Rada Samorządu Studenckiego<br />
+          Wydziału Informatyki i Telekomunikacji. <br />
+          Działamy dla was od 2137 lat.
+        </p>
+        <div className="hero-buttons">
+          <a href="/docs/Informator.pdf" className="btn-hero-outline" download>
+            ⬇ Pobierz Informator PDF
+          </a>
+        </div>
       </div>
     </section>
   );
