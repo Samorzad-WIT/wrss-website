@@ -25,7 +25,7 @@ export const members: Member[] = [
     role: "Koordynator Sekcji Informatyzacji",
     section: "Koordynatorzy",
     quote: "Technologia w służbie samorządu.",
-    imageUrl: "/images/members/piotr.png",
+    imageUrl: "logo_wrss.gif",
     phase: 1
   },
   {
@@ -60,7 +60,7 @@ export const members: Member[] = [
     name: "Karol Kosmala",
     role: "Koordynator Sekcji Promocji",
     section: "Koordynatorzy",
-    quote: "Docieramy do każdego studenta.",
+    quote: "karol kosmala ssie drągala.",
     imageUrl: "/images/members/piotr.png",
     phase: 1
   },
