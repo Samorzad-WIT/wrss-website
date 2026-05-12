@@ -6,7 +6,7 @@ export default function Hero() {
         <p className="hero-subtitle">
           Wydziałowa Rada Samorządu Studenckiego<br />
           Wydziału Informatyki i Telekomunikacji. <br />
-          Działamy dla was od 2137 lat.
+          Działamy dla Was z pasją i zaangażowaniem.
         </p>
         <div className="hero-buttons">
           <a href="/docs/Informator.pdf" className="btn-hero-outline" download>

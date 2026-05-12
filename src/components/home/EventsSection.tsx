@@ -17,8 +17,8 @@ export default function EventsSection() {
               ) : (
                 <div className="event-image-placeholder">📷 Zdjęcie</div>
               )}
-              <div className={`event-tag ${event.isCyclic ? 'upcoming' : 'past'}`}>
-                {event.isCyclic ? 'NADCHODZI' : 'MINIONE'}
+              <div className={`event-tag ${event.status === 'upcoming' ? 'upcoming' : 'past'}`}>
+                {event.status === 'upcoming' ? 'NADCHODZI' : 'MINIONE'}
               </div>
             </div>
             <div className="event-info">

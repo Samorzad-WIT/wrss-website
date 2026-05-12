@@ -752,10 +752,11 @@ p {
 }
 
 .org-card {
-  background: var(--bg-card);
+  background: #101D27;
   padding: 3rem 2rem;
   border-radius: 16px;
-  border: 1px solid var(--border);
+  border: 2px solid #374151;
+  border-left: 4px solid var(--accent);
   transition: transform 0.3s;
 }
 
@@ -795,10 +796,10 @@ p {
 }
 
 .member-card {
-  background: var(--bg-card);
+  background: #101D27;
   padding: 2.5rem 1.5rem;
   border-radius: 20px;
-  border: 1px solid var(--border);
+  border: 2px solid #748A9C;
   text-align: center;
   transition: all 0.3s;
 }
@@ -814,9 +815,10 @@ p {
   height: 180px;
   margin: 0 auto 1.5rem;
   position: relative;
-  padding: 8px;
+  padding: 4px;
   border-radius: 50%;
-  background: linear-gradient(180deg, transparent 50%, var(--accent) 100%);
+  border: 4px solid var(--accent);
+  background: transparent;
 }
 
 .member-photo {
@@ -824,7 +826,7 @@ p {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid var(--bg-card);
+  border: none;
 }
 
 .member-photo-placeholder {
@@ -1037,22 +1039,5 @@ p {
   }
 }
 
-.tool-card-title {
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
 
-.tool-card-desc {
-  font-size: 11px;
-  color: var(--text);
-  opacity: 0.8;
-  margin-bottom: 10px;
-}
-
-.tool-card-btn {
-  text-decoration: none;
-  display: block;
-  padding: 6px;
-}
 

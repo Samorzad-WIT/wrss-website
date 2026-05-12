@@ -7,7 +7,7 @@ export const members: Member[] = [
     role: "Przewodniczący WRSS W4",
     section: "Zarząd",
     quote: "Działamy dla studentów, z pasją i zaangażowaniem.",
-    imageUrl: "/images/members/piotr.svg",
+    imageUrl: "/images/members/piotr.png",
     phase: 1
   },
   {
@@ -16,7 +16,7 @@ export const members: Member[] = [
     role: "Wiceprzewodnicząca WRSS W4",
     section: "Zarząd",
     quote: "Wspólnie tworzymy lepszą przyszłość naszego wydziału.",
-    imageUrl: "/images/members/piotr.svg",
+    imageUrl: "/images/members/piotr.png",
     phase: 1
   },
   {
@@ -25,7 +25,7 @@ export const members: Member[] = [
     role: "Koordynator Sekcji Informatyzacji",
     section: "Koordynatorzy",
     quote: "Technologia w służbie samorządu.",
-    imageUrl: "/images/members/piotr.svg",
+    imageUrl: "/images/members/piotr.png",
     phase: 1
   },
   {
@@ -34,7 +34,7 @@ export const members: Member[] = [
     role: "Koordynator HR",
     section: "Koordynatorzy",
     quote: "Ludzie są sercem naszej organizacji.",
-    imageUrl: "/images/members/piotr.svg",
+    imageUrl: "/images/members/piotr.png",
     phase: 1
   },
   {
@@ -43,7 +43,7 @@ export const members: Member[] = [
     role: "Koordynator Sekcji Dydaktyki",
     section: "Koordynatorzy",
     quote: "Dbamy o wysoką jakość kształcenia.",
-    imageUrl: "/images/members/piotr.svg",
+    imageUrl: "/images/members/piotr.png",
     phase: 1
   },
   {
@@ -52,7 +52,7 @@ export const members: Member[] = [
     role: "Koordynator Sekcji Grafiki",
     section: "Koordynatorzy",
     quote: "Projektujemy wizerunek WRSS.",
-    imageUrl: "/images/members/piotr.svg",
+    imageUrl: "/images/members/piotr.png",
     phase: 1
   },
   {
@@ -61,7 +61,7 @@ export const members: Member[] = [
     role: "Koordynator Sekcji Promocji",
     section: "Koordynatorzy",
     quote: "Docieramy do każdego studenta.",
-    imageUrl: "/images/members/piotr.svg",
+    imageUrl: "/images/members/piotr.png",
     phase: 1
   },
   {
@@ -70,7 +70,7 @@ export const members: Member[] = [
     role: "Koordynator Sekcji HR",
     section: "Koordynatorzy",
     quote: "Integracja to podstawa sukcesu.",
-    imageUrl: "/images/members/piotr.svg",
+    imageUrl: "/images/members/piotr.png",
     phase: 1
   }
 ];

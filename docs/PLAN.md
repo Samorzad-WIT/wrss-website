@@ -9,7 +9,7 @@
 
 ## 1. Rzeczy do dokończenia (`PARTIAL`)
 
-- `[PARTIAL]` **Członkowie:** Układ i kafelki są gotowe 1:1 z Figmą, zdjęcia podpięte jako placeholdery. Trzeba podmienić dane w `src/data/members.ts` na prawdziwe i wrzucić fotki do `public/images/members/`.
+- `[PARTIAL]` **Członkowie:** Układ i kafelki są gotowe 1:1 z Figmą i PDFem. Zdjęcie Przewodniczącego podpięte, reszta to placeholdery. Trzeba podmienić dane w `src/data/members.ts` na prawdziwe i wrzucić fotki do `public/images/members/`.
 - `[PARTIAL]` **Wydarzenia:** Wizualnie gotowe (gradienty, tagi). Potrzebujemy prawdziwych opisów i zdjęć z imprez w `public/images/events/`.
 
 ---
@@ -25,10 +25,10 @@
 
 ## 3. Zrobione i gotowe (`DONE`)
 
-- `[DONE]` **Design (Figma 1:1):** Pełny Dark Mode, czerwone akcenty, nowoczesne gridy i font Montserrat.
+- `[DONE]` **Design (Figma 1:1):** Pełny Dark Mode, czerwone akcenty, nowoczesne gridy i font Montserrat. **Wizualizacja w 100% zgodna z projektem w Figmie i plikiem Home.pdf** (odwzorowane obramowania kart, czerwone paski boczne i ramki zdjęć).
 - `[DONE]` **Responsywność:** Strona działa na telefonach, posiada działające menu typu "hamburger".
 - `[DONE]` **Nawigacja płynna:** Przycisk Narzędzia i linki w menu poprawnie przewijają stronę (Anchor Links).
 - `[DONE]` **Narzędzia:** Winietki, QR i Punkty spięte jako zewnętrzne, działające aplikacje.
 - `[DONE]` **Hero & Informator:** Nowa sekcja powitalna z szybkim przyciskiem pobierania PDF.
 - `[DONE]` **Stopka (Footer):** Nowoczesny układ z poprawnymi ikonami Social Media (FB, IG, LI, TT, DC) i kontaktem.
-- `[DONE]` **Clean Code:** Usunięto martwy kod, projekt przechodzi `npm run build` bez błędów.
+- `[DONE]` **Clean Code:** Usunięto martwy kod, naprawiono błędy wczytywania zdjęć SVG z base64, projekt przechodzi `npm run build`.
