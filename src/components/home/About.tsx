@@ -2,8 +2,11 @@ export default function About() {
   return (
     <section id="o-nas" className="section-container">
       <div className="section-header">
-        <div className="section-gear">⚙️</div>
-        <h2 className="section-main-title">O ORGANIZACJI</h2>
+        <img 
+          src="/src/assets/images/figma/O ORGANIZACJI.svg" 
+          alt="O Organizacji" 
+          className="section-title-svg"
+        />
       </div>
       
       <div className="org-cards-grid">

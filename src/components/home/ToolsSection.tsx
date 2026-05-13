@@ -2,18 +2,36 @@ import iconWinietki from '../../assets/icons/tools/winietki.svg';
 import iconPunkty from '../../assets/icons/tools/punkty.svg';
 import iconQr from '../../assets/icons/tools/qr.svg';
 
+import headerTools from '../../assets/images/figma/NARZĘDZIA.svg';
+import gearTools from '../../assets/images/figma/GEAR_NARZEDZIA.svg';
+
 const tools = [
-  { id: 1, name: 'Generator winietek', icon: iconWinietki, link: 'https://winietki.pwrnow.pl' },
-  { id: 2, name: 'Aplikacja punktowa', icon: iconPunkty, link: 'https://punkty-wit.solvro.pl/dashboard' },
-  { id: 3, name: 'Generator kodów QR', icon: iconQr, link: 'https://foxjustfox.github.io/qrcode_gen_web/' },
+  { 
+    id: 1, 
+    name: 'Generator winietek', 
+    icon: iconWinietki, 
+    link: import.meta.env.VITE_WINIETKI_LINK || 'https://winietki.pwrnow.pl' 
+  },
+  { 
+    id: 2, 
+    name: 'Aplikacja punktowa', 
+    icon: iconPunkty, 
+    link: import.meta.env.VITE_PUNKTY_LINK || 'https://punkty-wit.solvro.pl/dashboard' 
+  },
+  { 
+    id: 3, 
+    name: 'Generator kodów QR', 
+    icon: iconQr, 
+    link: import.meta.env.VITE_QR_LINK || 'https://foxjustfox.github.io/qrcode_gen_web/' 
+  },
 ];
 
 export default function ToolsSection() {
   return (
     <section id="narzedzia" className="section-container">
-      <div className="section-header">
-        <div className="section-gear">⚙️</div>
-        <h2 className="section-main-title">NARZĘDZIA</h2>
+      <div className="section-header-svg">
+        <img src={gearTools} alt="" className="section-title-gear" />
+        <img src={headerTools} alt="NARZĘDZIA" className="section-title-svg" />
       </div>
 
       <div className="tools-grid">

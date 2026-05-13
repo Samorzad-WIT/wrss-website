@@ -395,43 +395,6 @@ p {
   font-weight: 500;
 }
 
-/* Stopka */
-.footer {
-  background: #1a202c;
-  color: #a0aec0;
-  padding: 3rem 2rem;
-  margin-top: 4rem;
-  text-align: center;
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.footer p {
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 1.5rem;
-}
-
-.footer-links a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: color 0.2s;
-}
-
-.footer-links a:hover {
-  color: var(--accent);
-}
-
 /* Kontakt */
 .contact-grid {
   display: grid;
@@ -651,24 +614,16 @@ p {
   align-items: center;
   text-align: center;
   padding: 2rem;
-  background-image: 
-    radial-gradient(circle at 10% 20%, rgba(242, 18, 38, 0.03) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(242, 18, 38, 0.03) 0%, transparent 40%);
+  background-color: #101D27;
+  background-image: url('./assets/images/figma/nagłówek.svg');
+  background-size: cover;
+  background-position: center;
   position: relative;
   overflow: hidden;
 }
 
-/* Gear Decoration for Hero */
-.hero-section::before {
-  content: '⚙️';
-  position: absolute;
-  font-size: 300px;
-  opacity: 0.03;
-  right: -100px;
-  top: 50%;
-  transform: translateY(-50%) rotate(15deg);
-  pointer-events: none;
-}
+/* Usunięto dekorację z emoji, ponieważ jest zawarta w nagłówek.svg */
+
 
 .hero-title {
   font-size: clamp(3rem, 8vw, 5rem);
@@ -732,18 +687,27 @@ p {
   align-items: center;
 }
 
-.section-gear {
-  color: var(--accent);
-  font-size: 3rem;
-  margin-bottom: 1rem;
+.section-header-svg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
 }
 
-.section-main-title {
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  color: white;
+.section-title-gear {
+  max-height: 80px;
+  height: auto;
+  margin-bottom: -15px;
+  z-index: 1;
 }
+
+.section-title-svg {
+  max-width: 100%;
+  height: auto;
+  max-height: 80px;
+  margin-bottom: 0;
+}
+
 
 .org-cards-grid {
   display: grid;

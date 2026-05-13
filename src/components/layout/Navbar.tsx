@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logoBiale from '../../assets/logos/WRSS WIT Logo Wektor Białe.svg';
+import logoAnimacja from '../../assets/images/figma/logo_animacja.gif';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +13,7 @@ export default function Navbar() {
       <nav className="navbar">
         <div className="nav-logo">
           <Link to="/" onClick={closeMenu} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <img src={logoBiale} alt="WRSS WIT Logo" className="logo-img" />
+            <img src={logoAnimacja} alt="WRSS WIT Logo" className="logo-img" />
             <span>WRSS <strong>WIT</strong></span>
           </Link>
         </div>

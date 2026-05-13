@@ -29,7 +29,7 @@ export const events: Event[] = [
     status: "upcoming",
     images: [],
     isCyclic: true,
-    imageUrl: "/images/events/event1.svg"
+    imageUrl: "/src/assets/images/figma/RejsW4xW5_231 1.svg"
   },
   {
     id: 4,

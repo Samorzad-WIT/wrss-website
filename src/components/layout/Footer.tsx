@@ -4,6 +4,7 @@ import iconIg from '../../assets/icons/social/instagram.svg';
 import iconDc from '../../assets/icons/social/discord.svg';
 import iconLi from '../../assets/icons/social/linkedin.svg';
 import iconTt from '../../assets/icons/social/tiktok.svg';
+import iconGmail from '../../assets/icons/social/gmail.svg';
 
 export default function Footer() {
   return (
@@ -30,7 +31,8 @@ export default function Footer() {
         <div className="footer-contact-section">
           <h3>Skontaktuj się z nami</h3>
           <a href="mailto:wit@samorzad.pwr.edu.pl" className="contact-email">
-            📧 wit@samorzad.pwr.edu.pl
+            <img src={iconGmail} alt="Email" width="20" style={{ filter: 'brightness(0) invert(1)', verticalAlign: 'middle', marginRight: '8px' }} />
+            wit@samorzad.pwr.edu.pl
           </a>
         </div>
       </div>
