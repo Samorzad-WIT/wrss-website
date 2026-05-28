@@ -1,77 +1,30 @@
 import type { Member } from '../types';
+import { membersAuto } from './members-auto';
 
-export const members: Member[] = [
-  {
-    id: 1,
-    name: "Piotr Dębicki",
-    role: "Przewodniczący WRSS W4",
-    section: "Zarząd",
-    quote: "Działamy dla studentów, z pasją i zaangażowaniem.",
-    imageUrl: "/images/members/piotr.png",
-    phase: 1
-  },
-  {
-    id: 2,
-    name: "Monika Świgost",
-    role: "Wiceprzewodnicząca WRSS W4",
-    section: "Zarząd",
-    quote: "Wspólnie tworzymy lepszą przyszłość naszego wydziału.",
-    imageUrl: "/images/members/piotr.png",
-    phase: 1
-  },
-  {
-    id: 3,
-    name: "Igor Lis",
-    role: "Koordynator Sekcji Informatyzacji",
-    section: "Koordynatorzy",
-    quote: "Technologia w służbie samorządu.",
-    imageUrl: "logo_wrss.gif",
-    phase: 1
-  },
-  {
-    id: 4,
-    name: "Szymon Kasza",
-    role: "Koordynator HR",
-    section: "Koordynatorzy",
-    quote: "Ludzie są sercem naszej organizacji.",
-    imageUrl: "/images/members/piotr.png",
-    phase: 1
-  },
-  {
-    id: 5,
-    name: "Bartosz Sęga",
-    role: "Koordynator Sekcji Dydaktyki",
-    section: "Koordynatorzy",
-    quote: "Dbamy o wysoką jakość kształcenia.",
-    imageUrl: "/images/members/piotr.png",
-    phase: 1
-  },
-  {
-    id: 6,
-    name: "Amelia Sroczyńska",
-    role: "Koordynator Sekcji Grafiki",
-    section: "Koordynatorzy",
-    quote: "Projektujemy wizerunek WRSS.",
-    imageUrl: "/images/members/piotr.png",
-    phase: 1
-  },
-  {
-    id: 7,
-    name: "Karol Kosmala",
-    role: "Koordynator Sekcji Promocji",
-    section: "Koordynatorzy",
-    quote: "karol kosmala ssie drągala.",
-    imageUrl: "/images/members/piotr.png",
-    phase: 1
-  },
-  {
-    id: 8,
-    name: "Filip Nowak",
-    role: "Koordynator Sekcji HR",
-    section: "Koordynatorzy",
-    quote: "Integracja to podstawa sukcesu.",
-    imageUrl: "/images/members/piotr.png",
-    phase: 1
-  }
-];
+/**
+ * Ręczne korekty kadrowania zdjęcia per osoba.
+ * Klucz = imię i nazwisko dokładnie jak na stronie PWr.
+ * Wartość = CSS object-position, np. 'center top', '50% 20%'.
+ */
+const photoPosition: Record<string, string> = {
+  // 'Piotr Dębicki': 'center top',
+};
 
+function deriveSection(role: string): string {
+  if (/Przewodnicząca?|Wiceprzewodnicząca?/.test(role)) return 'Zarząd';
+  if (/Koordynator/.test(role)) return 'Koordynatorzy';
+  return 'Członkowie';
+}
+
+export const members: Member[] = membersAuto
+  .filter((m) => m.role !== 'Członek WRSS')
+  .map((m, i) => ({
+    id: i + 1,
+    name: m.name,
+    role: m.role,
+    imageUrl: m.imageUrl ?? '',
+    section: deriveSection(m.role),
+    quote: '',
+    phase: 1 as const,
+    photoObjectPosition: photoPosition[m.name],
+  }));

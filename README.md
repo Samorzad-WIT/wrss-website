@@ -30,6 +30,13 @@ Dane zaciągane są wprost z plików TypeScript. Aby zaktualizować stronę:
 - Otwórz `src/data/members.ts` aby zarządzać członkami samorządu.
 - Umieszczaj wszystkie zdjęcia w folderze `public/images/`.
 
+Aby ręcznie odświeżyć dane pobierane automatycznie:
+```bash
+npm run update-members   # aktualizuje zdjęcia i skład z samorzad.pwr.edu.pl
+npm run update-events    # pobiera banery wydarzeń z Facebooka
+```
+Obie komendy uruchamiają się też automatycznie przed każdym `npm run build`.
+
 ##  Budowa na produkcję (Deployment)
 Aby wygenerować minifikowane pliki statyczne gotowe do wrzucenia na dowolny hosting (np. GitHub Pages, Vercel, Netlify):
 ```bash

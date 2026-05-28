@@ -6,6 +6,7 @@ export interface Member {
   quote: string;
   imageUrl: string;
   phase: 1 | 2;
+  photoObjectPosition?: string;
 }
 
 export interface Event {
@@ -15,6 +16,7 @@ export interface Event {
   date: string;
   status: 'past' | 'upcoming';
   images: string[];
+  facebookUrl?: string;
   imageUrl?: string;
   isCyclic: boolean;
 }

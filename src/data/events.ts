@@ -9,7 +9,8 @@ export const events: Event[] = [
     status: "upcoming",
     images: [],
     isCyclic: true,
-    imageUrl: "/images/events/event1.svg"
+    facebookUrl: "https://www.facebook.com/groups/931798366131952",
+    imageUrl: "/images/events/cs-event-1.jpg"
   },
   {
     id: 2,
@@ -19,6 +20,7 @@ export const events: Event[] = [
     status: "upcoming",
     images: [],
     isCyclic: true,
+    facebookUrl: "https://www.facebook.com/events/24790088377360051",
     imageUrl: "/images/events/event1.svg"
   },
   {
@@ -29,6 +31,7 @@ export const events: Event[] = [
     status: "upcoming",
     images: [],
     isCyclic: true,
+    facebookUrl: "https://www.facebook.com/events/1714209906674784",
     imageUrl: "/src/assets/images/figma/RejsW4xW5_231 1.svg"
   },
   {
@@ -39,6 +42,7 @@ export const events: Event[] = [
     status: "past",
     images: [],
     isCyclic: true,
+    facebookUrl: "https://www.facebook.com/events/804444005384010",
     imageUrl: "/images/events/event1.svg"
   },
   {
@@ -49,6 +53,7 @@ export const events: Event[] = [
     status: "past",
     images: [],
     isCyclic: true,
+    facebookUrl: "https://www.facebook.com/events/890269670716733",
     imageUrl: "/images/events/event1.svg"
   },
   {
@@ -59,6 +64,7 @@ export const events: Event[] = [
     status: "upcoming",
     images: [],
     isCyclic: true,
+    facebookUrl: "https://www.facebook.com/events/4399665443687417",
     imageUrl: "/images/events/event1.svg"
   },
   {
@@ -69,6 +75,7 @@ export const events: Event[] = [
     status: "upcoming",
     images: [],
     isCyclic: true,
+    facebookUrl: "https://www.facebook.com/events/",
     imageUrl: "/images/events/event1.svg"
   },
   {
@@ -79,6 +86,7 @@ export const events: Event[] = [
     status: "upcoming",
     images: [],
     isCyclic: true,
+    facebookUrl: "https://www.facebook.com/events/",
     imageUrl: "/images/events/event1.svg"
   }
 ];

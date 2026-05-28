@@ -894,6 +894,12 @@ p {
   position: relative;
 }
 
+.event-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
 .event-card:hover {
   transform: translateY(-5px);
 }
@@ -1057,4 +1063,4 @@ p {
 }
 
 
-
+
