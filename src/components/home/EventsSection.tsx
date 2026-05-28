@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { events } from '../../data/events';
 import { eventBanners } from '../../data/events-banners';
 
@@ -21,24 +22,14 @@ export default function EventsSection() {
       </>
     );
 
-    if (event.facebookUrl) {
-      return (
-        <a
-          key={event.id}
-          className="event-card event-card-link"
-          href={event.facebookUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {cardContent}
-        </a>
-      );
-    }
-
     return (
-      <div key={event.id} className="event-card">
+      <Link
+        key={event.id}
+        to={`/wydarzenia#event-${event.id}`}
+        className="event-card event-card-link"
+      >
         {cardContent}
-      </div>
+      </Link>
     );
   };
 
@@ -72,6 +63,12 @@ export default function EventsSection() {
           .filter((e) => e.status === 'past')
           .slice(0, 4)
           .map((event) => renderEventCard(event, 'MINIONE', 'past'))}
+      </div>
+
+      <div className="show-more-container">
+        <Link to="/wydarzenia" className="btn-secondary">
+          Zobacz wszystkie wydarzenia →
+        </Link>
       </div>
     </section>
   );

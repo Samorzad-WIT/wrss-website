@@ -1062,5 +1062,139 @@ p {
   }
 }
 
+/* ======== STRONA WYDARZEŃ ======== */
+.wyd-page {
+  padding-top: 80px;
+  min-height: 100vh;
+}
+
+.wyd-hero {
+  background-color: #101D27;
+  background-image: url('./assets/images/figma/nagłówek.svg');
+  background-size: cover;
+  background-position: center;
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+}
+
+.wyd-hero-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 800;
+  color: white;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 2rem;
+}
+
+.wyd-hero-title span {
+  color: var(--accent);
+}
+
+.wyd-hero-line {
+  width: 80px;
+  height: 3px;
+  background: var(--accent);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.wyd-list {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.wyd-item-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.wyd-item-link:hover .wyd-item-img {
+  transform: scale(1.04);
+}
+
+.wyd-list > * {
+  border-bottom: 1px solid #374151;
+}
+
+.wyd-list > *:last-child {
+  border-bottom: none;
+}
+
+.wyd-item {
+  padding: 2.5rem 0;
+  scroll-margin-top: 100px;
+}
+
+.wyd-item-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2rem;
+}
+
+.wyd-gear {
+  height: 40px;
+  width: auto;
+}
+
+.wyd-item-name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin: 0;
+}
+
+.wyd-item-body {
+  display: grid;
+  grid-template-columns: 1fr 46%;
+  gap: 2rem;
+  align-items: start;
+}
+
+.wyd-item-desc {
+  color: #94a3b8;
+  font-size: 0.88rem;
+  line-height: 1.85;
+  text-align: justify;
+  margin: 0;
+}
+
+.wyd-item-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  transition: transform 0.4s;
+}
+
+@media (max-width: 600px) {
+  .wyd-item {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .wyd-item-body {
+    grid-template-columns: 1fr;
+  }
+
+  .wyd-item-img {
+    aspect-ratio: 16 / 9;
+    order: -1;
+  }
+
+  .wyd-item-desc {
+    text-align: left;
+  }
+}
+
 
 
