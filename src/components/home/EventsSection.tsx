@@ -1,10 +1,14 @@
-import { Link } from 'react-router-dom';
-import { events } from '../../data/events';
-import { eventBanners } from '../../data/events-banners';
+import { Link } from 'react-router-dom'
+import { events } from '../../data/events'
+import { eventBanners } from '../../data/events-banners'
 
 export default function EventsSection() {
-  const renderEventCard = (event: (typeof events)[number], tag: 'NADCHODZI' | 'MINIONE', tagClass: 'upcoming' | 'past') => {
-    const imageSrc = eventBanners[event.id] ?? event.imageUrl ?? null;
+  const renderEventCard = (
+    event: (typeof events)[number],
+    tag: 'NADCHODZI' | 'MINIONE',
+    tagClass: 'upcoming' | 'past',
+  ) => {
+    const imageSrc = eventBanners[event.id] ?? event.imageUrl ?? null
 
     const cardContent = (
       <>
@@ -20,7 +24,7 @@ export default function EventsSection() {
           <h3 className="event-name">{event.name}</h3>
         </div>
       </>
-    );
+    )
 
     return (
       <Link
@@ -30,8 +34,8 @@ export default function EventsSection() {
       >
         {cardContent}
       </Link>
-    );
-  };
+    )
+  }
 
   return (
     <section id="wydarzenia" className="section-container">
@@ -71,5 +75,5 @@ export default function EventsSection() {
         </Link>
       </div>
     </section>
-  );
+  )
 }

@@ -2,9 +2,12 @@ export default function Hero() {
   return (
     <section id="hero" className="hero-section">
       <div className="hero-content">
-        <h1 className="hero-title">WITaj w <span>WRSS</span> <strong>W4N</strong></h1>
+        <h1 className="hero-title">
+          WITaj w <span>WRSS</span> <strong>W4N</strong>
+        </h1>
         <p className="hero-subtitle">
-          Wydziałowa Rada Samorządu Studenckiego<br />
+          Wydziałowa Rada Samorządu Studenckiego
+          <br />
           Wydziału Informatyki i Telekomunikacji. <br />
           Działamy dla Was z pasją i zaangażowaniem.
         </p>
@@ -15,5 +18,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  );
+  )
 }

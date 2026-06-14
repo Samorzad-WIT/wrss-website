@@ -46,7 +46,6 @@ main {
   flex: 1;
 }
 
-
 body {
   margin: 0;
   background-color: var(--bg);
@@ -158,7 +157,9 @@ body {
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 600;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
   white-space: nowrap;
 }
 
@@ -304,20 +305,19 @@ body {
     gap: 3rem;
     text-align: center;
   }
-  
+
   .footer-logo-box {
     justify-content: center;
   }
-  
+
   .social-icons {
     justify-content: center;
   }
-  
+
   .contact-email {
     justify-content: center;
   }
 }
-
 
 .container {
   max-width: 1000px;
@@ -353,7 +353,9 @@ p {
   border-radius: 10px;
   font-weight: bold;
   display: inline-block;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   box-shadow: 0 4px 14px 0 rgba(229, 62, 62, 0.39);
 }
 
@@ -395,7 +397,9 @@ p {
   box-shadow: var(--shadow);
   text-align: left;
   border: 1px solid var(--border);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
   display: flex;
   flex-direction: column;
 }
@@ -604,12 +608,12 @@ p {
 
 .tag-green {
   background: rgba(15, 110, 86, 0.1);
-  color: #0F6E56;
+  color: #0f6e56;
 }
 
 .tag-amber {
   background: rgba(133, 79, 11, 0.1);
-  color: #854F0B;
+  color: #854f0b;
 }
 
 /* Układy Grid */
@@ -657,9 +661,18 @@ p {
   font-weight: 700;
 }
 
-.card-icon-box.accent { background: var(--accent-bg); color: var(--accent); }
-.card-icon-box.green { background: rgba(15, 110, 86, 0.1); color: #0F6E56; }
-.card-icon-box.amber { background: rgba(133, 79, 11, 0.1); color: #854F0B; }
+.card-icon-box.accent {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+.card-icon-box.green {
+  background: rgba(15, 110, 86, 0.1);
+  color: #0f6e56;
+}
+.card-icon-box.amber {
+  background: rgba(133, 79, 11, 0.1);
+  color: #854f0b;
+}
 /* Sekcje Home */
 .hero-section {
   min-height: 100vh;
@@ -669,7 +682,7 @@ p {
   align-items: center;
   text-align: center;
   padding: 2rem;
-  background-color: #101D27;
+  background-color: #101d27;
   background-image: url('./assets/images/figma/nagłówek.svg');
   background-size: cover;
   background-position: center;
@@ -678,7 +691,6 @@ p {
 }
 
 /* Usunięto dekorację z emoji, ponieważ jest zawarta w nagłówek.svg */
-
 
 .hero-title {
   font-size: clamp(3rem, 8vw, 5rem);
@@ -762,7 +774,6 @@ p {
   margin-bottom: 0;
 }
 
-
 .org-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -770,7 +781,7 @@ p {
 }
 
 .org-card {
-  background: #101D27;
+  background: #101d27;
   padding: 3rem 2rem;
   border-radius: 16px;
   border: 2px solid #374151;
@@ -814,10 +825,10 @@ p {
 }
 
 .member-card {
-  background: #101D27;
+  background: #101d27;
   padding: 2.5rem 1.5rem;
   border-radius: 20px;
-  border: 2px solid #748A9C;
+  border: 2px solid #748a9c;
   text-align: center;
   transition: all 0.3s;
 }
@@ -979,7 +990,7 @@ p {
   font-weight: 800;
   color: white;
   margin: 0;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .show-more-container {
@@ -1069,7 +1080,7 @@ p {
 }
 
 .wyd-hero {
-  background-color: #101D27;
+  background-color: #101d27;
   background-image: url('./assets/images/figma/nagłówek.svg');
   background-size: cover;
   background-position: center;
@@ -1195,6 +1206,3 @@ p {
     text-align: left;
   }
 }
-
-
-

@@ -1,6 +1,7 @@
 # Plan Projektu – Strona WRSS (Samorząd WIT)
 
 > **Legenda:**
+>
 > - `[DONE]` — zrobione i śmiga
 > - `[PARTIAL]` — zaczęte, ale trzeba dokończyć (zazwyczaj brakuje nam zdjęć lub tekstów)
 > - `[TODO]` — pomysły, do których jeszcze nie usiedliśmy
@@ -9,7 +10,7 @@
 
 ## 1. Rzeczy do dokończenia (`PARTIAL`)
 
-- `[PARTIAL]` **Członkowie:** układ i kafelki są gotowe 1:1 z Figmą i PDFem. 
+- `[PARTIAL]` **Członkowie:** układ i kafelki są gotowe 1:1 z Figmą i PDFem.
 - `[PARTIAL]` **Wydarzenia:** wizualnie gotowe (gradienty, tagi). Potrzebujemy prawdziwych opisów i zdjęć z imprez w `public/images/events/`.
 
 ---
@@ -19,7 +20,7 @@
 - `[TODO]` **Koło Fortuny:** narazie skip
 - `[TODO]` **Historia WRSSu:** oś czasu ze zdjęciami starych składów.
 - `[TODO]` **"Dziś jest środa":** Easter-egg działający tylko we środy.
-- `[TODO]` **Licznik odwiedzin / Samorządowiec Miesiąca:** dodatki 
+- `[TODO]` **Licznik odwiedzin / Samorządowiec Miesiąca:** dodatki
 
 ---
 
@@ -32,4 +33,3 @@
 - `[DONE]` **Hero & Informator:** Nowa sekcja powitalna z tłem `nagłówek.svg` i szybkim przyciskiem pobierania PDF.
 - `[DONE]` **Stopka (Footer):** Nowoczesny układ z profesjonalnymi ikonami Social Media oraz dedykowaną ikoną Gmail.
 - `[DONE]` **Optymalizacja:** Usunięto martwy kod, zunifikowano style CSS i zintegrowano najnowsze assety z folderu Figma.
-

@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { events } from '../data/events';
-import { eventBanners } from '../data/events-banners';
-import gearIcon from '../assets/images/figma/GEAR_NARZEDZIA.svg';
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import { events } from '../data/events'
+import { eventBanners } from '../data/events-banners'
+import gearIcon from '../assets/images/figma/GEAR_NARZEDZIA.svg'
 
 function EventItem({ event }: { event: (typeof events)[number] }) {
-  const imageSrc = eventBanners[event.id] ?? event.imageUrl ?? null;
-  const hasFb = Boolean(event.facebookUrl) && !event.facebookUrl!.endsWith('/events/');
+  const imageSrc = eventBanners[event.id] ?? event.imageUrl ?? null
+  const hasFb = Boolean(event.facebookUrl) && !event.facebookUrl!.endsWith('/events/')
 
   const inner = (
     <div className="wyd-item" id={`event-${event.id}`}>
@@ -16,12 +16,10 @@ function EventItem({ event }: { event: (typeof events)[number] }) {
       </div>
       <div className="wyd-item-body">
         <p className="wyd-item-desc">{event.description}</p>
-        {imageSrc && (
-          <img src={imageSrc} alt={event.name} className="wyd-item-img" />
-        )}
+        {imageSrc && <img src={imageSrc} alt={event.name} className="wyd-item-img" />}
       </div>
     </div>
-  );
+  )
 
   if (hasFb) {
     return (
@@ -33,27 +31,27 @@ function EventItem({ event }: { event: (typeof events)[number] }) {
       >
         {inner}
       </a>
-    );
+    )
   }
-  return inner;
+  return inner
 }
 
 export default function Wydarzenia() {
-  const { hash } = useLocation();
+  const { hash } = useLocation()
 
   useEffect(() => {
     if (!hash) {
-      window.scrollTo({ top: 0 });
-      return;
+      window.scrollTo({ top: 0 })
+      return
     }
-    const el = document.querySelector(hash);
+    const el = document.querySelector(hash)
     if (el) {
       setTimeout(() => {
-        const top = el.getBoundingClientRect().top + window.scrollY - 100;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }, 80);
+        const top = el.getBoundingClientRect().top + window.scrollY - 100
+        window.scrollTo({ top, behavior: 'smooth' })
+      }, 80)
     }
-  }, [hash]);
+  }, [hash])
 
   return (
     <div className="wyd-page">
@@ -70,5 +68,5 @@ export default function Wydarzenia() {
         ))}
       </div>
     </div>
-  );
+  )
 }

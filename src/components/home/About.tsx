@@ -2,13 +2,13 @@ export default function About() {
   return (
     <section id="o-nas" className="section-container">
       <div className="section-header">
-        <img 
-          src="/src/assets/images/figma/O ORGANIZACJI.svg" 
-          alt="O Organizacji" 
+        <img
+          src="/src/assets/images/figma/O ORGANIZACJI.svg"
+          alt="O Organizacji"
           className="section-title-svg"
         />
       </div>
-      
+
       <div className="org-cards-grid">
         <div className="org-card">
           <div className="org-card-tag">O nas</div>
@@ -21,9 +21,7 @@ export default function About() {
         <div className="org-card">
           <div className="org-card-tag">Informacje</div>
           <h3 className="org-card-title">Informator</h3>
-          <p className="org-card-desc">
-            Wszystkie najważniejsze informacje w jednym miejscu
-          </p>
+          <p className="org-card-desc">Wszystkie najważniejsze informacje w jednym miejscu</p>
         </div>
 
         <div className="org-card">
@@ -35,5 +33,5 @@ export default function About() {
         </div>
       </div>
     </section>
-  );
+  )
 }

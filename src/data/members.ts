@@ -1,5 +1,5 @@
-import type { Member } from '../types';
-import { membersAuto } from './members-auto';
+import type { Member } from '../types'
+import { membersAuto } from './members-auto'
 
 /**
  * Ręczne korekty kadrowania zdjęcia per osoba.
@@ -8,12 +8,12 @@ import { membersAuto } from './members-auto';
  */
 const photoPosition: Record<string, string> = {
   // 'Piotr Dębicki': 'center top',
-};
+}
 
 function deriveSection(role: string): string {
-  if (/Przewodnicząca?|Wiceprzewodnicząca?/.test(role)) return 'Zarząd';
-  if (/Koordynator/.test(role)) return 'Koordynatorzy';
-  return 'Członkowie';
+  if (/Przewodnicząca?|Wiceprzewodnicząca?/.test(role)) return 'Zarząd'
+  if (/Koordynator/.test(role)) return 'Koordynatorzy'
+  return 'Członkowie'
 }
 
 export const members: Member[] = membersAuto
@@ -27,4 +27,4 @@ export const members: Member[] = membersAuto
     quote: '',
     phase: 1 as const,
     photoObjectPosition: photoPosition[m.name],
-  }));
+  }))

@@ -1,7 +1,7 @@
 export interface NarzedziaNavItem {
-  id: number;
-  name: string;
-  link: string;
+  id: number
+  name: string
+  link: string
 }
 
 export const narzedziaNavItems: NarzedziaNavItem[] = [
@@ -20,4 +20,4 @@ export const narzedziaNavItems: NarzedziaNavItem[] = [
     name: 'Generator kodów QR',
     link: import.meta.env.VITE_QR_LINK || 'https://foxjustfox.github.io/qrcode_gen_web/',
   },
-];
+]

@@ -1,14 +1,10 @@
-import { members } from '../../data/members';
+import { members } from '../../data/members'
 
 export default function MembersSection() {
   return (
     <section id="czlonkowie" className="section-container">
       <div className="section-header">
-        <img
-          src="/src/assets/images/figma/ZARZĄD.svg"
-          alt="Zarząd"
-          className="section-title-svg"
-        />
+        <img src="/src/assets/images/figma/ZARZĄD.svg" alt="Zarząd" className="section-title-svg" />
       </div>
 
       <div className="members-grid">
@@ -36,5 +32,5 @@ export default function MembersSection() {
         ))}
       </div>
     </section>
-  );
+  )
 }
