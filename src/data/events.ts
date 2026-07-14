@@ -1,4 +1,5 @@
 import type { Event } from '../types'
+import cruiseSvg from '../assets/images/figma/cruise.svg'
 
 export const events: Event[] = [
   {
@@ -35,7 +36,7 @@ export const events: Event[] = [
     images: [],
     isCyclic: true,
     facebookUrl: 'https://www.facebook.com/events/1714209906674784',
-    imageUrl: '/src/assets/images/figma/RejsW4xW5_231 1.svg',
+    imageUrl: cruiseSvg,
   },
   {
     id: 4,

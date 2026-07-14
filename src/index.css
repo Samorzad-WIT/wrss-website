@@ -683,14 +683,14 @@ p {
   text-align: center;
   padding: 2rem;
   background-color: #101d27;
-  background-image: url('./assets/images/figma/nagłówek.svg');
+  background-image: url('./assets/images/figma/header.svg');
   background-size: cover;
   background-position: center;
   position: relative;
   overflow: hidden;
 }
 
-/* Usunięto dekorację z emoji, ponieważ jest zawarta w nagłówek.svg */
+/* Usunięto dekorację z emoji, ponieważ jest zawarta w header.svg */
 
 .hero-title {
   font-size: clamp(3rem, 8vw, 5rem);
@@ -1081,7 +1081,7 @@ p {
 
 .wyd-hero {
   background-color: #101d27;
-  background-image: url('./assets/images/figma/nagłówek.svg');
+  background-image: url('./assets/images/figma/header.svg');
   background-size: cover;
   background-position: center;
   padding: 5rem 2rem 4rem;
@@ -1205,4 +1205,24 @@ p {
   .wyd-item-desc {
     text-align: left;
   }
+}
+
+.nav-logo-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-icon-invert {
+  filter: brightness(0) invert(1);
+}
+
+.footer-email-icon {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.mt-4rem {
+  margin-top: 4rem;
 }

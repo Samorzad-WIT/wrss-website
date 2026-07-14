@@ -1,4 +1,4 @@
-import logoBiale from '../../assets/logos/WRSS WIT Logo Wektor Białe.svg'
+import logoBiale from '../../assets/logos/logo-white.svg'
 import iconFb from '../../assets/icons/social/facebook.svg'
 import iconIg from '../../assets/icons/social/instagram.svg'
 import iconDc from '../../assets/icons/social/discord.svg'
@@ -34,7 +34,7 @@ export default function Footer() {
                 src={iconFb}
                 alt="Facebook"
                 width="24"
-                style={{ filter: 'brightness(0) invert(1)' }}
+                className="social-icon-invert"
               />
             </a>
             <a
@@ -47,7 +47,7 @@ export default function Footer() {
                 src={iconIg}
                 alt="Instagram"
                 width="24"
-                style={{ filter: 'brightness(0) invert(1)' }}
+                className="social-icon-invert"
               />
             </a>
             <a
@@ -60,7 +60,7 @@ export default function Footer() {
                 src={iconDc}
                 alt="Discord"
                 width="24"
-                style={{ filter: 'brightness(0) invert(1)' }}
+                className="social-icon-invert"
               />
             </a>
             <a
@@ -73,7 +73,7 @@ export default function Footer() {
                 src={iconLi}
                 alt="LinkedIn"
                 width="24"
-                style={{ filter: 'brightness(0) invert(1)' }}
+                className="social-icon-invert"
               />
             </a>
             <a
@@ -86,7 +86,7 @@ export default function Footer() {
                 src={iconTt}
                 alt="TikTok"
                 width="24"
-                style={{ filter: 'brightness(0) invert(1)' }}
+                className="social-icon-invert"
               />
             </a>
           </div>
@@ -99,11 +99,7 @@ export default function Footer() {
               src={iconGmail}
               alt="Email"
               width="20"
-              style={{
-                filter: 'brightness(0) invert(1)',
-                verticalAlign: 'middle',
-                marginRight: '8px',
-              }}
+              className="social-icon-invert footer-email-icon"
             />
             wit@samorzad.pwr.edu.pl
           </a>

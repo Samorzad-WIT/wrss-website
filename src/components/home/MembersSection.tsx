@@ -1,10 +1,11 @@
 import { members } from '../../data/members'
+import boardSvg from '../../assets/images/figma/board.svg'
 
 export default function MembersSection() {
   return (
     <section id="czlonkowie" className="section-container">
       <div className="section-header">
-        <img src="/src/assets/images/figma/ZARZĄD.svg" alt="Zarząd" className="section-title-svg" />
+        <img src={boardSvg} alt="Zarząd" className="section-title-svg" />
       </div>
 
       <div className="members-grid">

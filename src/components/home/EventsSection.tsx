@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { events } from '../../data/events'
 import { eventBanners } from '../../data/events-banners'
+import ourEventsSvg from '../../assets/images/figma/our-events.svg'
+import pastEventsSvg from '../../assets/images/figma/past-events.svg'
 
 export default function EventsSection() {
   const renderEventCard = (
@@ -41,7 +43,7 @@ export default function EventsSection() {
     <section id="wydarzenia" className="section-container">
       <div className="section-header">
         <img
-          src="/src/assets/images/figma/NASZE WYDARZENIA.svg"
+          src={ourEventsSvg}
           alt="Nasze Wydarzenia"
           className="section-title-svg"
         />
@@ -54,9 +56,9 @@ export default function EventsSection() {
           .map((event) => renderEventCard(event, 'NADCHODZI', 'upcoming'))}
       </div>
 
-      <div className="section-header" style={{ marginTop: '4rem' }}>
+      <div className="section-header mt-4rem">
         <img
-          src="/src/assets/images/figma/MINIONE.svg"
+          src={pastEventsSvg}
           alt="Minione Wydarzenia"
           className="section-title-svg"
         />

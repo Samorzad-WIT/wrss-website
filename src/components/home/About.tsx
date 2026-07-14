@@ -1,9 +1,11 @@
+import aboutOrganizationSvg from '../../assets/images/figma/about-organization.svg'
+
 export default function About() {
   return (
     <section id="o-nas" className="section-container">
       <div className="section-header">
         <img
-          src="/src/assets/images/figma/O ORGANIZACJI.svg"
+          src={aboutOrganizationSvg}
           alt="O Organizacji"
           className="section-title-svg"
         />

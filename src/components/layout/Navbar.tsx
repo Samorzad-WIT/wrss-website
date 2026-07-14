@@ -16,7 +16,7 @@ export default function Navbar() {
           <Link
             to="/"
             onClick={closeMenu}
-            style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '12px' }}
+            className="nav-logo-link"
           >
             <img src={logoAnimacja} alt="WRSS WIT Logo" className="logo-img" />
             <span>

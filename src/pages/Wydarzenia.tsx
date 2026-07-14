@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { events } from '../data/events'
 import { eventBanners } from '../data/events-banners'
-import gearIcon from '../assets/images/figma/GEAR_NARZEDZIA.svg'
+import gearIcon from '../assets/images/figma/gear-tools.svg'
 
 function EventItem({ event }: { event: (typeof events)[number] }) {
   const imageSrc = eventBanners[event.id] ?? event.imageUrl ?? null
-  const hasFb = Boolean(event.facebookUrl) && !event.facebookUrl!.endsWith('/events/')
+  const hasFb = Boolean(event.facebookUrl && !event.facebookUrl.endsWith('/events/'))
 
   const inner = (
     <div className="wyd-item" id={`event-${event.id}`}>
