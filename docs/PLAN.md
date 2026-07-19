@@ -19,7 +19,7 @@
 
 - `[TODO]` **Koło Fortuny:** narazie skip
 - `[TODO]` **Historia WRSSu:** oś czasu ze zdjęciami starych składów.
-- `[TODO]` **"Dziś jest środa":** Easter-egg działający tylko we środy.
+- `[TODO]` **"Dziś jest środa":** Easter-egg działający tylko w środy.
 - `[TODO]` **Licznik odwiedzin / Samorządowiec Miesiąca:** dodatki
 
 ---
