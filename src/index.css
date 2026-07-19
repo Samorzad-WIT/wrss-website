@@ -228,21 +228,26 @@ body {
 .footer-grid {
   max-width: 1400px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 4rem;
-  align-items: start;
+  text-align: center;
 }
 
 .footer-logo-section {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1.5rem;
+  flex: 1 1 0;
 }
 
 .footer-logo-box {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 15px;
 }
 
@@ -259,6 +264,14 @@ body {
   line-height: 1.2;
 }
 
+.footer-social-section,
+.footer-contact-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+}
+
 .footer-social-section h3,
 .footer-contact-section h3 {
   font-size: 1.1rem;
@@ -269,6 +282,7 @@ body {
 
 .social-icons {
   display: flex;
+  justify-content: center;
   gap: 16px;
 }
 
@@ -292,6 +306,7 @@ body {
 .contact-email {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   color: white;
   text-decoration: none;
@@ -301,7 +316,7 @@ body {
 
 @media (max-width: 768px) {
   .footer-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 3rem;
     text-align: center;
   }
