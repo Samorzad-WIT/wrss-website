@@ -1,12 +1,21 @@
 export interface Member {
   id: number
+  section_id: number
   name: string
   role: string
-  section: string
-  quote: string
-  imageUrl: string
-  phase: 1 | 2
-  photoObjectPosition?: string
+  image_url: string
+  photo_object_position: string | null
+  sort_order: number
+}
+
+export interface Section {
+  id: number
+  slug: string
+  title: string
+  size: 'large' | 'small'
+  source: 'auto' | 'manual'
+  sort_order: number
+  members: Member[]
 }
 
 export interface Event {
