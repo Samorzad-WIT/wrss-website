@@ -5,6 +5,7 @@ import iconDc from '../../assets/icons/social/discord.svg'
 import iconLi from '../../assets/icons/social/linkedin.svg'
 import iconTt from '../../assets/icons/social/tiktok.svg'
 import iconGmail from '../../assets/icons/social/gmail.svg'
+import VisitCounter from '../ui/VisitCounter'
 
 export default function Footer() {
   return (
@@ -105,6 +106,8 @@ export default function Footer() {
           </a>
         </div>
       </div>
+
+      <VisitCounter />
     </footer>
   )
 }
