@@ -10,8 +10,8 @@
 
 ## 1. Rzeczy do dokończenia (`PARTIAL`)
 
-- `[PARTIAL]` **Członkowie:** układ i kafelki są gotowe 1:1 z Figmą i PDFem.
-- `[PARTIAL]` **Wydarzenia:** wizualnie gotowe (gradienty, tagi). Potrzebujemy prawdziwych opisów i zdjęć z imprez w `public/images/events/`.
+- `[PARTIAL]` **Wydarzenia:** wizualnie gotowe (gradienty, tagi). Potrzebujemy prawdziwych opisów i zdjęć z imprez w `public/images/events/`. Nadal pobierane statycznie przy buildzie (`scripts/fetch-events.mjs`) — nie przeniesione do bazy jak Członkowie.
+- `[PARTIAL]` **Samorządowiec Miesiąca:** brak — licznik odwiedzin jest gotowy, ale wyróżnienie osoby miesiąca jeszcze nie istnieje.
 
 ---
 
@@ -19,8 +19,9 @@
 
 - `[TODO]` **Koło Fortuny:** narazie skip
 - `[TODO]` **Historia WRSSu:** oś czasu ze zdjęciami starych składów.
-- `[TODO]` **"Dziś jest środa":** Easter-egg działający tylko w środy.
-- `[TODO]` **Licznik odwiedzin / Samorządowiec Miesiąca:** dodatki
+- `[TODO]` **Samorządowiec Miesiąca:** wyróżnienie jednej osoby, np. ręcznie ustawiane pole w panelu admina.
+- `[TODO]` **Deploy na Coolify:** pliki repo (Dockerfile, nginx.conf, server/) gotowe, ale samo wdrożenie na serwerze Coolify (bazy, resource'y, domeny, sekrety) wymaga ręcznych kroków — patrz README.
+- `[TODO]` **Codzienny rebuild bannerów wydarzeń:** obecnie `fetch-events.mjs` odpala się tylko przy buildzie — nie ma jeszcze automatycznego, cyklicznego triggera (np. cron/GitHub Actions bijący w webhook deployu Coolify).
 
 ---
 
@@ -31,5 +32,10 @@
 - `[DONE]` **Nawigacja:** Płynne przewijanie do sekcji (Anchor Links) oraz animowane logo w Navbarze.
 - `[DONE]` **Narzędzia:** Winietki, QR i Punkty spięte jako zewnętrzne aplikacje. Nagłówek sekcji z nakładającą się grafiką zębatki.
 - `[DONE]` **Hero & Informator:** Nowa sekcja powitalna z tłem `nagłówek.svg` i szybkim przyciskiem pobierania PDF.
-- `[DONE]` **Stopka (Footer):** Nowoczesny układ z profesjonalnymi ikonami Social Media oraz dedykowaną ikoną Gmail.
+- `[DONE]` **Stopka (Footer):** Nowoczesny układ z profesjonalnymi ikonami Social Media oraz dedykowaną ikoną Gmail, wyśrodkowane kolumny, licznik odwiedzin na dole.
 - `[DONE]` **Optymalizacja:** Usunięto martwy kod, zunifikowano style CSS i zintegrowano najnowsze assety z folderu Figma.
+- `[DONE]` **"Dziś jest środa":** Easter-egg — modal z rozmytym tłem, pokazuje się raz na wejście gdy dzień tygodnia to środa, zamykany krzyżykiem lub kliknięciem w tło.
+- `[DONE]` **Licznik odwiedzin:** zapisywany w Postgresie przez `server/`, inkrementowany przy każdym wejściu na stronę, wyświetlany w stopce.
+- `[DONE]` **Członkowie — przeniesieni do bazy danych:** sekcje (obecny zarząd + dowolna liczba sekcji "przeszły zarząd") i osoby żyją w Postgresie zamiast w statycznych plikach TS. Obecny zarząd synchronizowany ręcznie z samorzad.pwr.edu.pl (panel admina, przycisk "Synchronizuj z PWr" — **nie** przy każdym buildzie). Przeszłe zarządy dodawane ręcznie w panelu, nigdy nie nadpisywane automatycznie.
+- `[DONE]` **Panel administracyjny (`/admin`):** logowanie login+hasło, zarządzanie sekcjami i osobami (dodawanie/edycja/usuwanie/kolejność/przenoszenie między sekcjami), przycisk ręcznej synchronizacji z PWr.
+- `[DONE]` **Hosting — przygotowanie pod Coolify:** `Dockerfile` + `nginx.conf` dla strony (Vite build → nginx, fallback SPA), `server/` jako osobny serwis (Express + Postgres) z własnym Dockerfile.

@@ -1,11 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export default function WednesdayPopup() {
-  const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    if (new Date().getDay() === 3) setOpen(true)
-  }, [])
+  const [open, setOpen] = useState(() => new Date().getDay() === 3)
 
   if (!open) return null
 
