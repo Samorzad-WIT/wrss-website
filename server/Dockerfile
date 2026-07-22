@@ -4,6 +4,7 @@ WORKDIR /app
 RUN corepack enable
 
 COPY package.json pnpm-lock.yaml ./
+COPY hash-password.mjs ./
 RUN pnpm install --prod --frozen-lockfile
 
 COPY *.js ./
