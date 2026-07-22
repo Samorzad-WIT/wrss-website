@@ -6,7 +6,7 @@ RUN corepack enable
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --prod --frozen-lockfile
 
-COPY index.js ./
+COPY *.js ./
 
 EXPOSE 3000
 CMD ["node", "index.js"]
