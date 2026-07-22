@@ -11,16 +11,13 @@
 ## 1. Rzeczy do dokończenia (`PARTIAL`)
 
 - `[PARTIAL]` **Wydarzenia:** wizualnie gotowe (gradienty, tagi). Potrzebujemy prawdziwych opisów i zdjęć z imprez w `public/images/events/`. Nadal pobierane statycznie przy buildzie (`scripts/fetch-events.mjs`) — nie przeniesione do bazy jak Członkowie.
-- `[PARTIAL]` **Samorządowiec Miesiąca:** brak — licznik odwiedzin jest gotowy, ale wyróżnienie osoby miesiąca jeszcze nie istnieje.
 
 ---
 
 ## 2. Nasza lista zadań (`TODO`)
 
 - `[TODO]` **Koło Fortuny:** narazie skip
-- `[TODO]` **Historia WRSSu:** oś czasu ze zdjęciami starych składów.
 - `[TODO]` **Samorządowiec Miesiąca:** wyróżnienie jednej osoby, np. ręcznie ustawiane pole w panelu admina.
-- `[TODO]` **Deploy na Coolify:** pliki repo (Dockerfile, nginx.conf, server/) gotowe, ale samo wdrożenie na serwerze Coolify (bazy, resource'y, domeny, sekrety) wymaga ręcznych kroków — patrz README.
 - `[TODO]` **Codzienny rebuild bannerów wydarzeń:** obecnie `fetch-events.mjs` odpala się tylko przy buildzie — nie ma jeszcze automatycznego, cyklicznego triggera (np. cron/GitHub Actions bijący w webhook deployu Coolify).
 
 ---
@@ -38,4 +35,5 @@
 - `[DONE]` **Licznik odwiedzin:** zapisywany w Postgresie przez `server/`, inkrementowany przy każdym wejściu na stronę, wyświetlany w stopce.
 - `[DONE]` **Członkowie — przeniesieni do bazy danych:** sekcje (obecny zarząd + dowolna liczba sekcji "przeszły zarząd") i osoby żyją w Postgresie zamiast w statycznych plikach TS. Obecny zarząd synchronizowany ręcznie z samorzad.pwr.edu.pl (panel admina, przycisk "Synchronizuj z PWr" — **nie** przy każdym buildzie). Przeszłe zarządy dodawane ręcznie w panelu, nigdy nie nadpisywane automatycznie.
 - `[DONE]` **Panel administracyjny (`/admin`):** logowanie login+hasło, zarządzanie sekcjami i osobami (dodawanie/edycja/usuwanie/kolejność/przenoszenie między sekcjami), przycisk ręcznej synchronizacji z PWr.
-- `[DONE]` **Hosting — przygotowanie pod Coolify:** `Dockerfile` + `nginx.conf` dla strony (Vite build → nginx, fallback SPA), `server/` jako osobny serwis (Express + Postgres) z własnym Dockerfile.
+- `[DONE]` **Hosting — Deploy na Coolify:** `Dockerfile` + `nginx.conf` dla strony (Vite build → nginx, fallback SPA), `server/` jako osobny serwis (Express + Postgres) z własnym Dockerfile. Wdrożone i działa.
+- `[DONE]` **Historia WRSSu:** sekcje wspierają dowolne małe custom-sekcje (oś czasu / stare składy) — obsłużone przez istniejący mechanizm sekcji Członków.
