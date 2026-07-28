@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { events } from '../../data/events'
 import { eventBanners } from '../../data/events-banners'
-import ourEventsSvg from '../../assets/images/figma/our-events.svg'
-import pastEventsSvg from '../../assets/images/figma/past-events.svg'
+import ourEventsSvg from '../../assets/images/our-events.svg'
+import pastEventsSvg from '../../assets/images/past-events.svg'
 
 export default function EventsSection() {
   const renderEventCard = (

@@ -1,5 +1,5 @@
 import { members } from '../../data/members'
-import boardSvg from '../../assets/images/figma/board.svg'
+import boardSvg from '../../assets/images/board.svg'
 
 export default function MembersSection() {
   return (

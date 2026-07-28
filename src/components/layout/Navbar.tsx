@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import logoAnimacja from '../../assets/images/figma/logo_animacja.gif'
+import logoAnimacja from '../../assets/logos/logo-animated.gif'
 import { narzedziaNavItems } from '../../config/narzedzia'
 
 export default function Navbar() {

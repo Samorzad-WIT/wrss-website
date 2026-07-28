@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { events } from '../data/events'
 import { eventBanners } from '../data/events-banners'
-import gearIcon from '../assets/images/figma/gear-tools.svg'
+import gearIcon from '../assets/images/gear-tools.svg'
 
 function EventItem({ event }: { event: (typeof events)[number] }) {
   const imageSrc = eventBanners[event.id] ?? event.imageUrl ?? null

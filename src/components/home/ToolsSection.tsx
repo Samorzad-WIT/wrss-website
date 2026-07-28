@@ -1,5 +1,5 @@
-import headerTools from '../../assets/images/figma/tools-header.svg'
-import gearTools from '../../assets/images/figma/gear-tools.svg'
+import headerTools from '../../assets/images/tools-header.svg'
+import gearTools from '../../assets/images/gear-tools.svg'
 import { narzedziaNavItems } from '../../config/narzedzia'
 
 export default function ToolsSection() {

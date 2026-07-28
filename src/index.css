@@ -698,7 +698,7 @@ p {
   text-align: center;
   padding: 2rem;
   background-color: #101d27;
-  background-image: url('./assets/images/figma/header.svg');
+  background-image: url('./assets/images/header.svg');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -1096,7 +1096,7 @@ p {
 
 .wyd-hero {
   background-color: #101d27;
-  background-image: url('./assets/images/figma/header.svg');
+  background-image: url('./assets/images/header.svg');
   background-size: cover;
   background-position: center;
   padding: 5rem 2rem 4rem;

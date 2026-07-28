@@ -1,5 +1,5 @@
 import type { Event } from '../types'
-import cruiseSvg from '../assets/images/figma/cruise.svg'
+import cruiseSvg from '../assets/images/events/cruise.svg'
 
 export const events: Event[] = [
   {

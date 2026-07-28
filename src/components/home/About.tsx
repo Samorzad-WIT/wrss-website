@@ -1,4 +1,4 @@
-import aboutOrganizationSvg from '../../assets/images/figma/about-organization.svg'
+import aboutOrganizationSvg from '../../assets/images/about-organization.svg'
 
 export default function About() {
   return (

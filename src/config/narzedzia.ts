@@ -1,5 +1,5 @@
-import iconWinietki from '../assets/icons/tools/winietki.svg'
-import iconPunkty from '../assets/icons/tools/punkty.svg'
+import iconWinietki from '../assets/icons/tools/nameplates.svg'
+import iconPunkty from '../assets/icons/tools/points.svg'
 import iconQr from '../assets/icons/tools/qr.svg'
 
 export interface NarzedziaNavItem {
