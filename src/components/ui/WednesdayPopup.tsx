@@ -1,11 +1,18 @@
 import { useEffect, useState } from 'react'
 
 export default function WednesdayPopup() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(() => new Date().getDay() === 3)
 
   useEffect(() => {
-    if (new Date().getDay() === 3) setOpen(true)
-  }, [])
+    if (!open) return
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [open])
 
   if (!open) return null
 
