@@ -1,0 +1,27 @@
+node_modules
+dist
+dist-ssr
+.git
+.github
+.env
+.env.*
+!.env.example
+docs
+*.log
+
+# Documentation & scripts
+docs/
+README.md
+scripts/
+*.pdf
+
+# IDE & design assets
+.idea
+.vscode
+figma/
+
+# Tooling & linter configs
+.editorconfig
+.prettierrc
+.prettierignore
+eslint.config.js
