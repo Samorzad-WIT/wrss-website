@@ -105,7 +105,7 @@ Strona jest wdrażana jako dwa/trzy osobne zasoby na Coolify, w jednym repo:
 
 1. **Postgres** — zasób bazodanowy Coolify, bez konfiguracji poza standardową.
 2. **`server/`** — zasób Docker (Base Directory: `/server`), zmienne środowiskowe jak w tabeli wyżej.
-3. **Strona** — zasób Docker (root `Dockerfile`, multi-stage: build w Node → serwowanie przez nginx z fallbackiem SPA). `VITE_*` muszą być ustawione jako **Build Variables** w Coolify (Vite zaszywa je przy buildzie, nie da się ich zmienić po zbudowaniu obrazu).
+3. **Strona** — zasób Docker (`deploy/Dockerfile`, multi-stage: build w Node → serwowanie przez nginx z fallbackiem SPA). `VITE_*` muszą być ustawione jako **Build Variables** w Coolify (Vite zaszywa je przy buildzie, nie da się ich zmienić po zbudowaniu obrazu).
 
 Kolejność wdrażania ma znaczenie: Postgres → `server/` (potrzebuje `DATABASE_URL`) → Strona (potrzebuje `VITE_API_URL` gotowego adresu `server/`).
 
