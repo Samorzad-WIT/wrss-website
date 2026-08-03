@@ -38,3 +38,6 @@ src/data/events-banners.ts
 
 /scratch
 
+# Lokalna baza danych do testów
+pg.zip
+/pgsql/
