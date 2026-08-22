@@ -22,6 +22,11 @@ export function requireAdmin(req, res, next) {
   const token = header.startsWith('Bearer ') ? header.slice(7) : null
   if (!token) return res.status(401).json({ error: 'Missing token' })
 
+  // Wsparcie dla statycznego tokenu z ENV (np. do użycia w Cron na Coolify)
+  if (process.env.ADMIN_TOKEN && token === process.env.ADMIN_TOKEN) {
+    return next()
+  }
+
   try {
     jwt.verify(token, JWT_SECRET)
     next()
