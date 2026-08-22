@@ -1,30 +1,16 @@
-import { useEffect, useState, type FormEvent } from 'react'
+
+import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 import * as api from '../lib/adminApi'
 import { getToken, clearToken } from '../lib/adminApi'
-
-interface SectionRow {
-  id: number
-  slug: string
-  title: string
-  size: 'large' | 'small'
-  source: 'auto' | 'manual'
-  sort_order: number
-}
-
-interface MemberRow {
-  id: number
-  section_id: number
-  name: string
-  role: string
-  image_url: string
-  photo_object_position: string | null
-  sort_order: number
-}
+import type { SectionRow, MemberRow } from '../components/admin/types'
+import AdminLoginForm from '../components/admin/AdminLoginForm'
+import AdminSection from '../components/admin/AdminSection'
 
 export default function Admin() {
   const [token, setTokenState] = useState<string | null>(getToken())
 
-  if (!token) return <LoginForm onLoggedIn={() => setTokenState(getToken())} />
+  if (!token) return <AdminLoginForm onLoggedIn={() => setTokenState(getToken())} />
   return (
     <Dashboard
       onLogout={() => {
@@ -35,57 +21,11 @@ export default function Admin() {
   )
 }
 
-function LoginForm({ onLoggedIn }: { onLoggedIn: () => void }) {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState<string | null>(null)
-  const [busy, setBusy] = useState(false)
-
-  async function handleSubmit(e: FormEvent) {
-    e.preventDefault()
-    setBusy(true)
-    setError(null)
-    try {
-      await api.login(username, password)
-      onLoggedIn()
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Błąd logowania')
-    } finally {
-      setBusy(false)
-    }
-  }
-
-  return (
-    <div className="admin-login-wrap">
-      <form className="admin-login-form" onSubmit={handleSubmit}>
-        <h1>Panel administracyjny</h1>
-        <input
-          placeholder="Login"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          autoFocus
-        />
-        <input
-          placeholder="Hasło"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {error && <p className="admin-error">{error}</p>}
-        <button type="submit" disabled={busy}>
-          {busy ? 'Logowanie...' : 'Zaloguj'}
-        </button>
-      </form>
-    </div>
-  )
-}
-
 function Dashboard({ onLogout }: { onLogout: () => void }) {
   const [sections, setSections] = useState<SectionRow[]>([])
   const [members, setMembers] = useState<MemberRow[]>([])
   const [error, setError] = useState<string | null>(null)
   const [syncing, setSyncing] = useState(false)
-  const [syncMsg, setSyncMsg] = useState<string | null>(null)
 
   async function reload() {
     try {
@@ -96,7 +36,7 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
       setSections(s)
       setMembers(m)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Błąd wczytywania danych')
+      toast.error(err instanceof Error ? err.message : 'Błąd wczytywania danych')
     }
   }
 
@@ -124,20 +64,18 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
 
   async function handleSync() {
     setSyncing(true)
-    setSyncMsg(null)
-    try {
-      const result = (await api.adminFetch('/api/admin/sync-members', { method: 'POST' })) as {
-        created: number
-        updated: number
-        total: number
+    await toast.promise(
+      api.adminFetch('/api/admin/sync-members', { method: 'POST' }).then(async (result: any) => {
+        await reload()
+        return `Zsynchronizowano: ${result.created} nowych, ${result.updated} zaktualizowanych`
+      }),
+      {
+        loading: 'Synchronizacja z PWr...',
+        success: (msg) => msg,
+        error: (err) => err instanceof Error ? err.message : 'Błąd synchronizacji'
       }
-      setSyncMsg(`Zsynchronizowano: ${result.created} nowych, ${result.updated} zaktualizowanych`)
-      await reload()
-    } catch (err) {
-      setSyncMsg(err instanceof Error ? err.message : 'Błąd synchronizacji')
-    } finally {
-      setSyncing(false)
-    }
+    )
+    setSyncing(false)
   }
 
   async function addSection() {
@@ -149,37 +87,32 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
       .replace(/[̀-ͯ]/g, '')
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/(^-|-$)/g, '')
-    try {
-      await api.adminFetch('/api/admin/sections', {
+      
+    await toast.promise(
+      api.adminFetch('/api/admin/sections', {
         method: 'POST',
         body: JSON.stringify({ slug, title, size: 'small', source: 'manual' }),
-      })
-      await reload()
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Błąd dodawania sekcji')
-    }
+      }).then(() => reload()),
+      { loading: 'Dodawanie...', success: 'Dodano', error: 'Błąd' }
+    )
   }
 
   async function updateSection(id: number, patch: Partial<SectionRow>) {
-    try {
-      await api.adminFetch(`/api/admin/sections/${id}`, {
+    await toast.promise(
+      api.adminFetch(`/api/admin/sections/${id}`, {
         method: 'PATCH',
         body: JSON.stringify(patch),
-      })
-      await reload()
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Błąd zapisu sekcji')
-    }
+      }).then(() => reload()),
+      { loading: 'Zapisywanie sekcji...', success: 'Zapisano sekcję', error: 'Błąd zapisu' }
+    )
   }
 
   async function deleteSection(id: number) {
     if (!confirm('Usunąć sekcję razem ze wszystkimi jej osobami?')) return
-    try {
-      await api.adminFetch(`/api/admin/sections/${id}`, { method: 'DELETE' })
-      await reload()
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Błąd usuwania sekcji')
-    }
+    await toast.promise(
+      api.adminFetch(`/api/admin/sections/${id}`, { method: 'DELETE' }).then(() => reload()),
+      { loading: 'Usuwanie...', success: 'Usunięto sekcję', error: 'Błąd usuwania' }
+    )
   }
 
   async function moveSection(id: number, direction: -1 | 1) {
@@ -188,52 +121,46 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
     const swapWith = idx + direction
     if (swapWith < 0 || swapWith >= ordered.length) return
     ;[ordered[idx], ordered[swapWith]] = [ordered[swapWith], ordered[idx]]
-    try {
-      await api.adminFetch('/api/admin/sections/reorder', {
+    
+    await toast.promise(
+      api.adminFetch('/api/admin/sections/reorder', {
         method: 'POST',
         body: JSON.stringify({ ids: ordered.map((s) => s.id) }),
-      })
-      await reload()
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Błąd zmiany kolejności')
-    }
+      }).then(() => reload()),
+      { loading: 'Zmiana kolejności...', success: 'Zmieniono', error: 'Błąd' }
+    )
   }
 
   async function addMember(sectionId: number) {
     const name = prompt('Imię i nazwisko')
     if (!name) return
     const role = prompt('Rola') ?? ''
-    try {
-      await api.adminFetch('/api/admin/members', {
+    
+    await toast.promise(
+      api.adminFetch('/api/admin/members', {
         method: 'POST',
         body: JSON.stringify({ section_id: sectionId, name, role }),
-      })
-      await reload()
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Błąd dodawania osoby')
-    }
+      }).then(() => reload()),
+      { loading: 'Dodawanie...', success: 'Dodano', error: 'Błąd' }
+    )
   }
 
   async function updateMember(id: number, patch: Partial<MemberRow>) {
-    try {
-      await api.adminFetch(`/api/admin/members/${id}`, {
+    await toast.promise(
+      api.adminFetch(`/api/admin/members/${id}`, {
         method: 'PATCH',
         body: JSON.stringify(patch),
-      })
-      await reload()
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Błąd zapisu osoby')
-    }
+      }).then(() => reload()),
+      { loading: 'Zapisywanie osoby...', success: 'Zapisano', error: 'Błąd zapisu' }
+    )
   }
 
   async function deleteMember(id: number) {
     if (!confirm('Usunąć tę osobę?')) return
-    try {
-      await api.adminFetch(`/api/admin/members/${id}`, { method: 'DELETE' })
-      await reload()
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Błąd usuwania osoby')
-    }
+    await toast.promise(
+      api.adminFetch(`/api/admin/members/${id}`, { method: 'DELETE' }).then(() => reload()),
+      { loading: 'Usuwanie...', success: 'Usunięto', error: 'Błąd usuwania' }
+    )
   }
 
   async function moveMember(sectionId: number, id: number, direction: -1 | 1) {
@@ -244,15 +171,14 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
     const swapWith = idx + direction
     if (swapWith < 0 || swapWith >= ordered.length) return
     ;[ordered[idx], ordered[swapWith]] = [ordered[swapWith], ordered[idx]]
-    try {
-      await api.adminFetch('/api/admin/members/reorder', {
+    
+    await toast.promise(
+      api.adminFetch('/api/admin/members/reorder', {
         method: 'POST',
         body: JSON.stringify({ section_id: sectionId, ids: ordered.map((m) => m.id) }),
-      })
-      await reload()
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Błąd zmiany kolejności')
-    }
+      }).then(() => reload()),
+      { loading: 'Zmiana kolejności...', success: 'Zmieniono', error: 'Błąd' }
+    )
   }
 
   const orderedSections = [...sections].sort((a, b) => a.sort_order - b.sort_order)
@@ -273,88 +199,26 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
       </div>
 
       {error && <p className="admin-error">{error}</p>}
-      {syncMsg && <p className="admin-info">{syncMsg}</p>}
 
       {orderedSections.map((section) => (
-        <div key={section.id} className="admin-section">
-          <div className="admin-section-header">
-            <input
-              className="admin-section-title-input"
-              value={section.title}
-              onChange={(e) =>
-                setSections((prev) =>
-                  prev.map((s) => (s.id === section.id ? { ...s, title: e.target.value } : s)),
-                )
-              }
-              onBlur={(e) => updateSection(section.id, { title: e.target.value })}
-            />
-            <select
-              value={section.size}
-              onChange={(e) =>
-                updateSection(section.id, { size: e.target.value as 'large' | 'small' })
-              }
-            >
-              <option value="large">duża</option>
-              <option value="small">mała</option>
-            </select>
-            <span className="admin-section-source">{section.source}</span>
-            <button onClick={() => moveSection(section.id, -1)}>↑</button>
-            <button onClick={() => moveSection(section.id, 1)}>↓</button>
-            <button onClick={() => addMember(section.id)}>+ Osoba</button>
-            <button onClick={() => deleteSection(section.id)} className="admin-danger">
-              Usuń sekcję
-            </button>
-          </div>
-
-          <div className="admin-members-list">
-            {members
-              .filter((m) => m.section_id === section.id)
-              .sort((a, b) => a.sort_order - b.sort_order)
-              .map((member) => (
-                <div key={member.id} className="admin-member-row">
-                  <input
-                    defaultValue={member.name}
-                    onBlur={(e) => updateMember(member.id, { name: e.target.value })}
-                    placeholder="Imię i nazwisko"
-                  />
-                  <input
-                    defaultValue={member.role}
-                    onBlur={(e) => updateMember(member.id, { role: e.target.value })}
-                    placeholder="Rola"
-                  />
-                  <input
-                    defaultValue={member.image_url}
-                    onBlur={(e) => updateMember(member.id, { image_url: e.target.value })}
-                    placeholder="URL zdjęcia"
-                  />
-                  <input
-                    defaultValue={member.photo_object_position ?? ''}
-                    onBlur={(e) =>
-                      updateMember(member.id, { photo_object_position: e.target.value || null })
-                    }
-                    placeholder="np. center top"
-                  />
-                  <select
-                    value={member.section_id}
-                    onChange={(e) =>
-                      updateMember(member.id, { section_id: Number(e.target.value) })
-                    }
-                  >
-                    {orderedSections.map((s) => (
-                      <option key={s.id} value={s.id}>
-                        {s.title}
-                      </option>
-                    ))}
-                  </select>
-                  <button onClick={() => moveMember(section.id, member.id, -1)}>↑</button>
-                  <button onClick={() => moveMember(section.id, member.id, 1)}>↓</button>
-                  <button onClick={() => deleteMember(member.id)} className="admin-danger">
-                    Usuń
-                  </button>
-                </div>
-              ))}
-          </div>
-        </div>
+        <AdminSection
+          key={section.id}
+          section={section}
+          members={members}
+          orderedSections={orderedSections}
+          onUpdateSection={updateSection}
+          onMoveSection={moveSection}
+          onDeleteSection={deleteSection}
+          onAddMember={addMember}
+          onUpdateMember={updateMember}
+          onMoveMember={moveMember}
+          onDeleteMember={deleteMember}
+          onLocalTitleChange={(id, newTitle) => 
+            setSections((prev) =>
+              prev.map((s) => (s.id === id ? { ...s, title: newTitle } : s))
+            )
+          }
+        />
       ))}
     </div>
   )

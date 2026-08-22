@@ -1,4 +1,5 @@
 import https from 'node:https'
+import * as cheerio from 'cheerio'
 
 const BASE = 'https://samorzad.pwr.edu.pl'
 const URL = `${BASE}/wydzial-informatyki-i-telekomunikacji/czlonkowie`
@@ -25,26 +26,30 @@ function get(url) {
 
 export async function scrapeCurrentBoard() {
   const html = await get(URL)
+  const $ = cheerio.load(html)
 
   const members = []
-  const blockRegex = /<div class="person-box">([\s\S]*?)<div class="person-hover-info">/g
-  let m
 
-  while ((m = blockRegex.exec(html)) !== null) {
-    const block = m[1]
-    const imgMatch = block.match(/src="([^"]*\.webp)"/)
-    const firstName = block.match(/<span class="name">([^<]+)<\/span>/)?.[1]?.trim()
-    const lastName = block.match(/<span class="name second">([^<]+)<\/span>/)?.[1]?.trim()
-    const roleRaw = block.match(/<div class="desc">([^<\n]+)/)?.[1]?.trim()
+  $('.person-box').each((_, el) => {
+    const $el = $(el)
+    const firstName = $el.find('span.name').not('.second').first().text().trim()
+    const lastName = $el.find('span.name.second').first().text().trim()
+    
+    let roleRaw = $el.find('div.desc').first().text().trim()
+    if (roleRaw) {
+      roleRaw = roleRaw.split('\n')[0].trim()
+    }
 
-    if (!firstName || !lastName) continue
+    const imgSrc = $el.find('img').attr('src')
+
+    if (!firstName || !lastName) return
 
     members.push({
       name: `${firstName} ${lastName}`,
-      role: roleRaw ?? 'Członek WRSS',
-      imageUrl: imgMatch ? BASE + imgMatch[1] : '',
+      role: roleRaw || 'Członek WRSS',
+      imageUrl: imgSrc && imgSrc.includes('.webp') ? BASE + imgSrc : '',
     })
-  }
+  })
 
   return members
 }

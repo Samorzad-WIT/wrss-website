@@ -3,6 +3,7 @@ import rateLimit from 'express-rate-limit'
 import { pool } from './db.js'
 import { login, requireAdmin } from './auth.js'
 import { scrapeCurrentBoard } from './scrape.js'
+import asyncHandler from 'express-async-handler'
 
 const router = express.Router()
 
@@ -13,7 +14,7 @@ const loginLimiter = rateLimit({
   legacyHeaders: false,
 })
 
-router.post('/login', loginLimiter, async (req, res) => {
+router.post('/login', loginLimiter, asyncHandler(async (req, res) => {
   const { username, password } = req.body ?? {}
   if (!username || !password) return res.status(400).json({ error: 'Missing credentials' })
 
@@ -30,12 +31,12 @@ router.use(requireAdmin)
 
 // --- Sections ---
 
-router.get('/sections', async (_req, res) => {
+router.get('/sections', asyncHandler(async (_req, res) => {
   const { rows } = await pool.query('SELECT * FROM sections ORDER BY sort_order, id')
   res.json(rows)
 })
 
-router.post('/sections', async (req, res) => {
+router.post('/sections', asyncHandler(async (req, res) => {
   const { slug, title, size = 'small', source = 'manual' } = req.body ?? {}
   if (!slug || !title) return res.status(400).json({ error: 'slug and title required' })
 
@@ -48,7 +49,7 @@ router.post('/sections', async (req, res) => {
   res.status(201).json(rows[0])
 })
 
-router.patch('/sections/:id', async (req, res) => {
+router.patch('/sections/:id', asyncHandler(async (req, res) => {
   const { title, size } = req.body ?? {}
   const { rows } = await pool.query(
     `UPDATE sections SET title = COALESCE($1, title), size = COALESCE($2, size)
@@ -59,12 +60,12 @@ router.patch('/sections/:id', async (req, res) => {
   res.json(rows[0])
 })
 
-router.delete('/sections/:id', async (req, res) => {
+router.delete('/sections/:id', asyncHandler(async (req, res) => {
   await pool.query('DELETE FROM sections WHERE id = $1', [req.params.id])
   res.status(204).end()
 })
 
-router.post('/sections/reorder', async (req, res) => {
+router.post('/sections/reorder', asyncHandler(async (req, res) => {
   const { ids } = req.body ?? {}
   if (!Array.isArray(ids)) return res.status(400).json({ error: 'ids array required' })
 
@@ -76,12 +77,12 @@ router.post('/sections/reorder', async (req, res) => {
 
 // --- Members ---
 
-router.get('/members', async (_req, res) => {
+router.get('/members', asyncHandler(async (_req, res) => {
   const { rows } = await pool.query('SELECT * FROM members ORDER BY section_id, sort_order, id')
   res.json(rows)
 })
 
-router.post('/members', async (req, res) => {
+router.post('/members', asyncHandler(async (req, res) => {
   const { section_id, name, role = '', image_url = '', photo_object_position = null } =
     req.body ?? {}
   if (!section_id || !name) return res.status(400).json({ error: 'section_id and name required' })
@@ -95,7 +96,7 @@ router.post('/members', async (req, res) => {
   res.status(201).json(rows[0])
 })
 
-router.patch('/members/:id', async (req, res) => {
+router.patch('/members/:id', asyncHandler(async (req, res) => {
   const { name, role, image_url, photo_object_position, section_id } = req.body ?? {}
   const { rows } = await pool.query(
     `UPDATE members SET
@@ -118,12 +119,12 @@ router.patch('/members/:id', async (req, res) => {
   res.json(rows[0])
 })
 
-router.delete('/members/:id', async (req, res) => {
+router.delete('/members/:id', asyncHandler(async (req, res) => {
   await pool.query('DELETE FROM members WHERE id = $1', [req.params.id])
   res.status(204).end()
 })
 
-router.post('/members/reorder', async (req, res) => {
+router.post('/members/reorder', asyncHandler(async (req, res) => {
   const { section_id, ids } = req.body ?? {}
   if (!section_id || !Array.isArray(ids)) {
     return res.status(400).json({ error: 'section_id and ids array required' })
@@ -143,7 +144,7 @@ router.post('/members/reorder', async (req, res) => {
 
 // --- Sync current board from PWr site ---
 
-router.post('/sync-members', async (_req, res) => {
+router.post('/sync-members', asyncHandler(async (_req, res) => {
   const { rows: sectionRows } = await pool.query(
     "SELECT id FROM sections WHERE source = 'auto' ORDER BY id LIMIT 1",
   )

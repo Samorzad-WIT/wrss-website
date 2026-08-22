@@ -5,7 +5,7 @@ import publicRoutes from './routes-public.js'
 import adminRoutes from './routes-admin.js'
 
 const PORT = process.env.PORT || 3000
-const ORIGIN = process.env.CORS_ORIGIN || '*'
+const ORIGIN = process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ['http://localhost:5173', 'http://127.0.0.1:5173']
 
 await ensureSchema()
 

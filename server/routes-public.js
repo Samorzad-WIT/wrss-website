@@ -1,23 +1,24 @@
 import express from 'express'
+import asyncHandler from 'express-async-handler'
 import { pool } from './db.js'
 
 const router = express.Router()
 
 router.get('/health', (_req, res) => res.json({ ok: true }))
 
-router.get('/api/visits', async (_req, res) => {
+router.get('/api/visits', asyncHandler(async (_req, res) => {
   const { rows } = await pool.query('SELECT count FROM visit_counter WHERE id = 1')
   res.json({ count: Number(rows[0].count) })
-})
+}))
 
-router.post('/api/visits', async (_req, res) => {
+router.post('/api/visits', asyncHandler(async (_req, res) => {
   const { rows } = await pool.query(
     'UPDATE visit_counter SET count = count + 1 WHERE id = 1 RETURNING count',
   )
   res.json({ count: Number(rows[0].count) })
-})
+}))
 
-router.get('/api/members', async (_req, res) => {
+router.get('/api/members', asyncHandler(async (_req, res) => {
   const { rows: sections } = await pool.query(
     'SELECT * FROM sections ORDER BY sort_order, id',
   )
@@ -31,6 +32,6 @@ router.get('/api/members', async (_req, res) => {
   }
 
   res.json([...bySection.values()])
-})
+}))
 
 export default router

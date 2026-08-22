@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import WednesdayPopup from './components/ui/WednesdayPopup'
@@ -20,25 +21,28 @@ function SiteLayout({ children }: { children: ReactNode }) {
 
 function App() {
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <SiteLayout>
-            <Home />
-          </SiteLayout>
-        }
-      />
-      <Route
-        path="/wydarzenia"
-        element={
-          <SiteLayout>
-            <Wydarzenia />
-          </SiteLayout>
-        }
-      />
-      <Route path="/admin" element={<Admin />} />
-    </Routes>
+    <>
+      <Toaster position="bottom-right" />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <SiteLayout>
+              <Home />
+            </SiteLayout>
+          }
+        />
+        <Route
+          path="/wydarzenia"
+          element={
+            <SiteLayout>
+              <Wydarzenia />
+            </SiteLayout>
+          }
+        />
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
+    </>
   )
 }
 

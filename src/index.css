@@ -785,7 +785,7 @@ p {
 .section-title-svg {
   max-width: 100%;
   height: auto;
-  max-height: 80px;
+  max-height: 120px;
   margin-bottom: 0;
 }
 
@@ -1050,7 +1050,7 @@ p {
 }
 
 .event-name {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: 800;
   color: white;
   margin: 0;
@@ -1214,12 +1214,12 @@ p {
 }
 
 .wyd-gear {
-  height: 40px;
+  height: 60px;
   width: auto;
 }
 
 .wyd-item-name {
-  font-size: 1.3rem;
+  font-size: 1.89rem;
   font-weight: 800;
   color: white;
   text-transform: uppercase;
@@ -1232,12 +1232,12 @@ p {
   display: grid;
   grid-template-columns: 1fr 46%;
   gap: 2rem;
-  align-items: start;
+  align-items: center;
 }
 
 .wyd-item-desc {
   color: #94a3b8;
-  font-size: 0.88rem;
+  font-size: 1.15rem;
   line-height: 1.85;
   text-align: justify;
   margin: 0;
@@ -1245,8 +1245,7 @@ p {
 
 .wyd-item-img {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+  height: auto;
   border-radius: 12px;
   display: block;
   transition: transform 0.4s;
@@ -1262,7 +1261,6 @@ p {
   }
 
   .wyd-item-img {
-    aspect-ratio: 16 / 9;
     order: -1;
   }
 
