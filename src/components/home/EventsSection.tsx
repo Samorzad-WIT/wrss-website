@@ -10,7 +10,9 @@ export default function EventsSection() {
     tag: 'NADCHODZI' | 'MINIONE',
     tagClass: 'upcoming' | 'past',
   ) => {
-    const imageSrc = eventBanners[event.id] ?? event.imageUrl ?? null
+    const fallback =
+      event.imageUrl && !event.imageUrl.endsWith('event1.svg') ? event.imageUrl : null
+    const imageSrc = eventBanners[event.id] ?? fallback
 
     const cardContent = (
       <>
@@ -52,7 +54,7 @@ export default function EventsSection() {
       <div className="events-grid">
         {events
           .filter((e) => e.status === 'upcoming')
-          .slice(0, 4)
+          .slice(0, 3)
           .map((event) => renderEventCard(event, 'NADCHODZI', 'upcoming'))}
       </div>
 
@@ -67,7 +69,7 @@ export default function EventsSection() {
       <div className="events-grid">
         {events
           .filter((e) => e.status === 'past')
-          .slice(0, 4)
+          .slice(0, 3)
           .map((event) => renderEventCard(event, 'MINIONE', 'past'))}
       </div>
 

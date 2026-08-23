@@ -6,6 +6,7 @@ import Footer from './components/layout/Footer'
 import WednesdayPopup from './components/ui/WednesdayPopup'
 import Home from './pages/Home'
 import Wydarzenia from './pages/Wydarzenia'
+import Rekrutacja from './pages/Rekrutacja'
 import Admin from './pages/Admin'
 
 function SiteLayout({ children }: { children: ReactNode }) {
@@ -37,6 +38,14 @@ function App() {
           element={
             <SiteLayout>
               <Wydarzenia />
+            </SiteLayout>
+          }
+        />
+        <Route
+          path="/rekrutacja"
+          element={
+            <SiteLayout>
+              <Rekrutacja />
             </SiteLayout>
           }
         />

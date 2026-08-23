@@ -5,10 +5,20 @@ import { eventBanners } from '../data/events-banners'
 import gearIcon from '../assets/images/gear-tools.svg'
 
 function EventItem({ event }: { event: (typeof events)[number] }) {
-  const imageSrc = eventBanners[event.id] ?? event.imageUrl ?? null
+  const fallback =
+    event.imageUrl && !event.imageUrl.endsWith('event1.svg') ? event.imageUrl : null
+  const imageSrc = eventBanners[event.id] ?? fallback
   const hasFb = Boolean(event.facebookUrl && !event.facebookUrl.endsWith('/events/'))
 
-  const inner = (
+  const media = imageSrc ? (
+    <img src={imageSrc} alt={event.name} className="wyd-item-img" />
+  ) : (
+    <div className="wyd-item-img wyd-item-img-placeholder">
+      <img src={gearIcon} alt="" />
+    </div>
+  )
+
+  return (
     <div className="wyd-item" id={`event-${event.id}`}>
       <div className="wyd-item-header">
         <img src={gearIcon} alt="" className="wyd-gear" />
@@ -16,24 +26,22 @@ function EventItem({ event }: { event: (typeof events)[number] }) {
       </div>
       <div className="wyd-item-body">
         <p className="wyd-item-desc">{event.description}</p>
-        {imageSrc && <img src={imageSrc} alt={event.name} className="wyd-item-img" />}
+        {hasFb && imageSrc ? (
+          <a
+            href={event.facebookUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="wyd-item-link"
+            title={`${event.name} na Facebooku`}
+          >
+            {media}
+          </a>
+        ) : (
+          media
+        )}
       </div>
     </div>
   )
-
-  if (hasFb) {
-    return (
-      <a
-        href={event.facebookUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="wyd-item-link"
-      >
-        {inner}
-      </a>
-    )
-  }
-  return inner
 }
 
 export default function Wydarzenia() {

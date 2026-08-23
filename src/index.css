@@ -980,7 +980,7 @@ p {
 }
 
 .event-image-container {
-  height: 300px;
+  aspect-ratio: 1.91 / 1;
   position: relative;
   overflow: hidden;
 }
@@ -1174,7 +1174,7 @@ p {
 }
 
 .wyd-list {
-  max-width: 860px;
+  max-width: 1040px;
   margin: 0 auto;
   padding: 3rem 2rem 5rem;
   display: flex;
@@ -1184,8 +1184,9 @@ p {
 
 .wyd-item-link {
   display: block;
-  text-decoration: none;
-  color: inherit;
+  border-radius: 12px;
+  overflow: hidden;
+  line-height: 0;
 }
 
 .wyd-item-link:hover .wyd-item-img {
@@ -1230,7 +1231,7 @@ p {
 
 .wyd-item-body {
   display: grid;
-  grid-template-columns: 1fr 46%;
+  grid-template-columns: 1fr 54%;
   gap: 2rem;
   align-items: center;
 }
@@ -1245,10 +1246,186 @@ p {
 
 .wyd-item-img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 1.91 / 1;
+  object-fit: cover;
   border-radius: 12px;
   display: block;
   transition: transform 0.4s;
+}
+
+.wyd-item-img-placeholder {
+  background: #101d27;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wyd-item-img-placeholder img {
+  height: 50%;
+  opacity: 0.35;
+}
+
+/* Rekrutacja */
+.rekrutacja-page {
+  padding-top: 80px;
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+.rekrutacja-content {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rekrutacja-gear {
+  height: 60px;
+  width: auto;
+  margin-bottom: 1.5rem;
+}
+
+.rekrutacja-desc {
+  color: #94a3b8;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+}
+
+.rekrutacja-form {
+  width: 100%;
+  max-width: 640px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--accent);
+  border-radius: 12px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-sizing: border-box;
+}
+
+.rekrutacja-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.rekrutacja-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rekrutacja-field span {
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.rekrutacja-field em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.rekrutacja-field input,
+.rekrutacja-field textarea {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: var(--text);
+  font: inherit;
+  transition: border-color 0.2s;
+}
+
+.rekrutacja-field input::placeholder,
+.rekrutacja-field textarea::placeholder {
+  color: #64748b;
+}
+
+.rekrutacja-field input:focus,
+.rekrutacja-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.rekrutacja-field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.rekrutacja-radio-group {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rekrutacja-radio {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.rekrutacja-radio input {
+  accent-color: var(--accent);
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.rekrutacja-submit {
+  border: none;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.rekrutacja-submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.rekrutacja-success {
+  width: 100%;
+  max-width: 640px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--accent);
+  border-radius: 12px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.rekrutacja-success h2 {
+  color: white;
+  margin: 0 0 0.75rem;
+}
+
+.rekrutacja-success p {
+  color: #94a3b8;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .rekrutacja-row {
+    grid-template-columns: 1fr;
+  }
+
+  .rekrutacja-form {
+    padding: 1.5rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -1260,7 +1437,8 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .wyd-item-img {
+  .wyd-item-body > .wyd-item-link,
+  .wyd-item-body > .wyd-item-img {
     order: -1;
   }
 

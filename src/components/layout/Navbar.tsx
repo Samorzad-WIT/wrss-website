@@ -36,10 +36,10 @@ export default function Navbar() {
           <Link to="/wydarzenia" onClick={closeMenu}>
             Wydarzenia
           </Link>
-          <Link to="/#informator" onClick={closeMenu}>
+          <Link to="/" onClick={closeMenu}>
             Informator
           </Link>
-          <Link to="/#rekrutacja" onClick={closeMenu}>
+          <Link to="/rekrutacja" onClick={closeMenu}>
             Rekrutacja
           </Link>
 
