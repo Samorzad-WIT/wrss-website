@@ -7,8 +7,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "dev": "node --env-file=../.env index.js",
     "hash-password": "node hash-password.mjs"
   },
+
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cheerio": "^1.2.0",
