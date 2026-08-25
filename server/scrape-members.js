@@ -34,7 +34,7 @@ export async function scrapeCurrentBoard() {
     const $el = $(el)
     const firstName = $el.find('span.name').not('.second').first().text().trim()
     const lastName = $el.find('span.name.second').first().text().trim()
-    
+
     let roleRaw = $el.find('div.desc').first().text().trim()
     if (roleRaw) {
       roleRaw = roleRaw.split('\n')[0].trim()
@@ -47,6 +47,7 @@ export async function scrapeCurrentBoard() {
     members.push({
       name: `${firstName} ${lastName}`,
       role: roleRaw || 'Członek WRSS',
+      // dla 'pustej osoby przypisujemy Członek WRSS '
       imageUrl: imgSrc && imgSrc.includes('.webp') ? BASE + imgSrc : '',
     })
   })
