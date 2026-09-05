@@ -41,3 +41,5 @@ src/data/events-banners.ts
 # Lokalna baza danych do testów
 pg.zip
 /pgsql/
+
+/.agents/

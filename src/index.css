@@ -3,14 +3,15 @@
 :root {
   --text: #cbd5e1;
   --text-h: #ffffff;
-  --bg: #27303d; /* Ciemny granat bazowy */
+  --bg: #27303d; /* Powrót do docelowego koloru z oryginału Figmy */
   --bg-card: #1f2937; /* Nieco ciemniejsze karty */
   --border: #374151;
   --code-bg: #1e293b;
-  --accent: #f21226; /* Jaskrawa czerwień WRSS */
-  --accent-bg: rgba(242, 18, 38, 0.1);
-  --accent-border: rgba(242, 18, 38, 0.5);
-  --social-bg: rgba(242, 18, 38, 0.15);
+  --accent: #FF1C37; /* Jaskrawa czerwień WRSS z Figmy */
+  --footer-bg: #15222E; /* Przygaszony wariant na stopkę */
+  --accent-bg: rgba(255, 28, 55, 0.1);
+  --accent-border: rgba(255, 28, 55, 0.5);
+  --social-bg: rgba(255, 28, 55, 0.15);
   --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
   --sans: 'Montserrat', system-ui, -apple-system, sans-serif;
   --heading: 'Montserrat', system-ui, sans-serif;
@@ -34,6 +35,20 @@
 #root {
   width: 100%;
   min-height: 100svh;
+  background-color: var(--bg);
+  position: relative;
+  z-index: 1;
+}
+
+#root::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('./assets/images/gear-pattern-bg.svg');
+  background-repeat: repeat;
+  opacity: 0.08; /* Silne wyciszenie zębatek (8% przezroczystości) */
+  z-index: -1;
+  pointer-events: none;
 }
 
 .app-wrapper {
@@ -48,7 +63,7 @@ main {
 
 body {
   margin: 0;
-  background-color: var(--bg);
+  background-color: transparent;
 }
 
 .navbar-container {
@@ -219,7 +234,7 @@ body {
 
 /* Footer New Design */
 .footer {
-  background: var(--accent);
+  background: var(--footer-bg);
   color: white;
   padding: 4rem 2rem;
   margin-top: 0;
@@ -716,7 +731,13 @@ p {
 }
 
 .hero-title span {
-  color: var(--accent);
+  color: white;
+}
+
+.hero-title strong {
+  background: linear-gradient(180deg, var(--accent) 0%, #8b0010 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-subtitle {
@@ -761,6 +782,12 @@ p {
   padding: 6rem 2rem;
 }
 
+@media (max-width: 768px) {
+  .section-container {
+    padding: 3rem 1rem;
+  }
+}
+
 .section-header {
   text-align: center;
   margin-bottom: 4rem;
@@ -789,6 +816,20 @@ p {
   margin-bottom: 0;
 }
 
+.red-divider-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 24px;
+}
+
+.red-divider {
+  flex: 1;
+  height: 3px;
+  background-color: var(--accent);
+  border-radius: 2px;
+}
+
 .org-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -805,7 +846,7 @@ p {
 }
 
 .org-card:hover {
-  transform: translateY(-5px);
+  /* Usunięto hover zgodnie z dyrektywą statyczności z Figmy */
 }
 
 .org-card-tag {
@@ -976,7 +1017,7 @@ p {
 }
 
 .event-card:hover {
-  transform: translateY(-5px);
+  /* Brak hover na podstawie specyfikacji statycznej */
 }
 
 .event-image-container {
@@ -993,7 +1034,7 @@ p {
 }
 
 .event-card:hover .event-image {
-  transform: scale(1.05);
+  /* Statyczne wykończenie */
 }
 
 .event-image-placeholder {

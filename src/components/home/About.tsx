@@ -4,11 +4,15 @@ export default function About() {
   return (
     <section id="o-nas" className="section-container">
       <div className="section-header">
-        <img
-          src={aboutOrganizationSvg}
-          alt="O Organizacji"
-          className="section-title-svg"
-        />
+        <div className="red-divider-wrapper">
+          <div className="red-divider"></div>
+          <img
+            src={aboutOrganizationSvg}
+            alt="O Organizacji"
+            className="section-title-svg"
+          />
+          <div className="red-divider"></div>
+        </div>
       </div>
 
       <div className="org-cards-grid">
