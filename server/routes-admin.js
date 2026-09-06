@@ -201,8 +201,8 @@ router.post(
       return res.status(502).json({ error: `Scrape failed: ${e.message}` })
     }
 
-    scraped = scraped.filter((m) => !m.role.match(/Członek|Członkini/i))
-    // odrzucamy osoby z Członek lub Członkini, reszta jest pokazywana na stronie
+    scraped = scraped.filter((m) => !m.role.match(/Członek|Członkini|Idol/i))
+    // odrzucamy osoby z Członek lub Członkini oraz Idola, reszta jest pokazywana na stronie
     if (scraped.length === 0) {
       return res.status(502).json({ error: 'No members found on PWr page' })
     }
@@ -215,6 +215,16 @@ router.post(
 
     let created = 0
     let updated = 0
+
+    const scrapedNames = new Set(scraped.map((m) => m.name))
+    let deleted = 0
+
+    for (const [name, id] of existingByName.entries()) {
+      if (!scrapedNames.has(name)) {
+        await pool.query('DELETE FROM members WHERE id = $1', [id])
+        deleted++
+      }
+    }
 
     for (const [i, member] of scraped.entries()) {
       const existingId = existingByName.get(member.name)
@@ -234,7 +244,7 @@ router.post(
       }
     }
 
-    res.json({ created, updated, total: scraped.length })
+    res.json({ created, updated, deleted, total: scraped.length })
   }),
 )
 
