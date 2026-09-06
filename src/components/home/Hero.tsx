@@ -3,7 +3,7 @@ export default function Hero() {
     <section id="hero" className="hero-section">
       <div className="hero-content">
         <h1 className="hero-title">
-          WITaj w <span>WRSS</span> <strong>W4N</strong>
+          WITaj w <strong>WRSS</strong> <span>W4N</span>
         </h1>
         <p className="hero-subtitle">
           Wydziałowa Rada Samorządu Studenckiego
