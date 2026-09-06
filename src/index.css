@@ -234,7 +234,7 @@ body {
 
 /* Footer New Design */
 .footer {
-  background: var(--footer-bg);
+  background: var(--accent);
   color: white;
   padding: 4rem 2rem;
   margin-top: 0;
@@ -875,8 +875,9 @@ p {
 }
 
 .members-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
 }
 
@@ -887,6 +888,9 @@ p {
   border: 2px solid #748a9c;
   text-align: center;
   transition: all 0.3s;
+  width: 310px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .member-card:hover {
