@@ -88,47 +88,24 @@ try {
     process.exit(0)
   }
 
-  // Split into Zarząd (Przewodniczący, Wice, Koordynatorzy) and Członkowie if desired, or single group
-  const boardMembers = members.filter(m => m.role.toLowerCase().includes('przewodnicz') || m.role.toLowerCase().includes('koordynator') || m.role.toLowerCase().includes('sekretarz'))
-  const otherMembers = members.filter(m => !boardMembers.some(b => b.id === m.id))
+  // Filtrujemy tylko osoby pełniące funkcje w Zarządzie (Przewodniczący, Wice, Koordynatorzy, Sekretarz)
+  const boardMembers = members.filter(
+    (m) =>
+      m.role.toLowerCase().includes('przewodnicz') ||
+      m.role.toLowerCase().includes('koordynator') ||
+  )
 
-  const sections = []
-
-  if (boardMembers.length > 0) {
-    sections.push({
+  const sections = [
+    {
       id: 1,
       slug: 'zarzad-obecny',
       title: 'Obecny Zarząd',
       size: 'large',
       source: 'auto',
       sort_order: 1,
-      members: boardMembers,
-    })
-  }
-
-  if (otherMembers.length > 0) {
-    sections.push({
-      id: 2,
-      slug: 'czlonkowie-rady',
-      title: 'Członkowie Rady',
-      size: 'small',
-      source: 'auto',
-      sort_order: 2,
-      members: otherMembers,
-    })
-  }
-
-  if (sections.length === 0) {
-    sections.push({
-      id: 1,
-      slug: 'zarzad-obecny',
-      title: 'Obecny Zarząd',
-      size: 'large',
-      source: 'auto',
-      sort_order: 1,
-      members,
-    })
-  }
+      members: boardMembers.length > 0 ? boardMembers : members,
+    },
+  ]
 
   const outputContent = `// Automatycznie generowane przez scripts/fetch-members.mjs – nie edytuj ręcznie
 import type { Section } from '../types'
@@ -137,7 +114,8 @@ export const defaultMembers: Section[] = ${JSON.stringify(sections, null, 2)}
 `
 
   fs.writeFileSync(OUT_FILE, outputContent, 'utf-8')
-  console.log(`✓ fetch-members: pomyślnie zaktualizowano ${members.length} członków w src/data/members.ts (Zarząd: ${boardMembers.length}, Członkowie: ${otherMembers.length})`)
+  console.log(`✓ fetch-members: pomyślnie zaktualizowano ${sections[0].members.length} członków Zarządu w src/data/members.ts`)
 } catch (err) {
   console.warn(`⚠ fetch-members: nie udało się pobrać danych (${err.message}). Zachowano poprzedni stan.`)
 }
+
