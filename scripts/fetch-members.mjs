@@ -31,19 +31,18 @@ function get(url) {
 
 function parseMembers(html) {
   const members = []
-  // Match person-box containers
-  const boxRegex = /<div[^>]*class="[^"]*person-box[^"]*"[^>]*>([\s\S]*?)<\/div>\s*<\/div>/gi
-  let match
+  // Split by person-box
+  const chunks = html.split(/<div[^>]*class="[^"]*person-box[^"]*"[^>]*>/i)
 
   let idCounter = 1
 
-  while ((match = boxRegex.exec(html)) !== null) {
-    const boxContent = match[1]
+  for (let i = 1; i < chunks.length; i++) {
+    const chunk = chunks[i]
 
-    const firstNameMatch = boxContent.match(/<span[^>]*class="name(?!\s+second)"[^>]*>([^<]+)<\/span>/i)
-    const lastNameMatch = boxContent.match(/<span[^>]*class="name\s+second"[^>]*>([^<]+)<\/span>/i)
-    const descMatch = boxContent.match(/<div[^>]*class="desc"[^>]*>([\s\S]*?)<\/div>/i)
-    const imgMatch = boxContent.match(/<img[^>]*src="([^"]+)"/i)
+    const firstNameMatch = chunk.match(/<span[^>]*class="name(?!\s+second)"[^>]*>([^<]+)<\/span>/i)
+    const lastNameMatch = chunk.match(/<span[^>]*class="name\s+second"[^>]*>([^<]+)<\/span>/i)
+    const descMatch = chunk.match(/<div[^>]*class="desc"[^>]*>([\s\S]*?)<\/div>/i)
+    const imgMatch = chunk.match(/<img[^>]*src="([^"]+)"/i)
 
     const firstName = firstNameMatch ? firstNameMatch[1].trim() : ''
     const lastName = lastNameMatch ? lastNameMatch[1].trim() : ''
@@ -89,8 +88,38 @@ try {
     process.exit(0)
   }
 
-  const sections = [
-    {
+  // Split into Zarząd (Przewodniczący, Wice, Koordynatorzy) and Członkowie if desired, or single group
+  const boardMembers = members.filter(m => m.role.toLowerCase().includes('przewodnicz') || m.role.toLowerCase().includes('koordynator') || m.role.toLowerCase().includes('sekretarz'))
+  const otherMembers = members.filter(m => !boardMembers.some(b => b.id === m.id))
+
+  const sections = []
+
+  if (boardMembers.length > 0) {
+    sections.push({
+      id: 1,
+      slug: 'zarzad-obecny',
+      title: 'Obecny Zarząd',
+      size: 'large',
+      source: 'auto',
+      sort_order: 1,
+      members: boardMembers,
+    })
+  }
+
+  if (otherMembers.length > 0) {
+    sections.push({
+      id: 2,
+      slug: 'czlonkowie-rady',
+      title: 'Członkowie Rady',
+      size: 'small',
+      source: 'auto',
+      sort_order: 2,
+      members: otherMembers,
+    })
+  }
+
+  if (sections.length === 0) {
+    sections.push({
       id: 1,
       slug: 'zarzad-obecny',
       title: 'Obecny Zarząd',
@@ -98,8 +127,8 @@ try {
       source: 'auto',
       sort_order: 1,
       members,
-    },
-  ]
+    })
+  }
 
   const outputContent = `// Automatycznie generowane przez scripts/fetch-members.mjs – nie edytuj ręcznie
 import type { Section } from '../types'
@@ -108,7 +137,7 @@ export const defaultMembers: Section[] = ${JSON.stringify(sections, null, 2)}
 `
 
   fs.writeFileSync(OUT_FILE, outputContent, 'utf-8')
-  console.log(`✓ fetch-members: pomyślnie zaktualizowano ${members.length} członków w src/data/members.ts`)
+  console.log(`✓ fetch-members: pomyślnie zaktualizowano ${members.length} członków w src/data/members.ts (Zarząd: ${boardMembers.length}, Członkowie: ${otherMembers.length})`)
 } catch (err) {
   console.warn(`⚠ fetch-members: nie udało się pobrać danych (${err.message}). Zachowano poprzedni stan.`)
 }
