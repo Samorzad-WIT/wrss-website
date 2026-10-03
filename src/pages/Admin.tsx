@@ -87,7 +87,7 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
       .replace(/[̀-ͯ]/g, '')
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/(^-|-$)/g, '')
-      
+
     await toast.promise(
       api.adminFetch('/api/admin/sections', {
         method: 'POST',
@@ -120,8 +120,8 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
     const idx = ordered.findIndex((s) => s.id === id)
     const swapWith = idx + direction
     if (swapWith < 0 || swapWith >= ordered.length) return
-    ;[ordered[idx], ordered[swapWith]] = [ordered[swapWith], ordered[idx]]
-    
+      ;[ordered[idx], ordered[swapWith]] = [ordered[swapWith], ordered[idx]]
+
     await toast.promise(
       api.adminFetch('/api/admin/sections/reorder', {
         method: 'POST',
@@ -135,7 +135,7 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
     const name = prompt('Imię i nazwisko')
     if (!name) return
     const role = prompt('Rola') ?? ''
-    
+
     await toast.promise(
       api.adminFetch('/api/admin/members', {
         method: 'POST',
@@ -170,8 +170,8 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
     const idx = ordered.findIndex((m) => m.id === id)
     const swapWith = idx + direction
     if (swapWith < 0 || swapWith >= ordered.length) return
-    ;[ordered[idx], ordered[swapWith]] = [ordered[swapWith], ordered[idx]]
-    
+      ;[ordered[idx], ordered[swapWith]] = [ordered[swapWith], ordered[idx]]
+
     await toast.promise(
       api.adminFetch('/api/admin/members/reorder', {
         method: 'POST',
@@ -213,7 +213,7 @@ function Dashboard({ onLogout }: { onLogout: () => void }) {
           onUpdateMember={updateMember}
           onMoveMember={moveMember}
           onDeleteMember={deleteMember}
-          onLocalTitleChange={(id, newTitle) => 
+          onLocalTitleChange={(id, newTitle) =>
             setSections((prev) =>
               prev.map((s) => (s.id === id ? { ...s, title: newTitle } : s))
             )

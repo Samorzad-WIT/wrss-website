@@ -22,7 +22,10 @@ export default function WednesdayPopup() {
         <button className="wednesday-close" onClick={() => setOpen(false)} aria-label="Zamknij">
           X
         </button>
-        <img src="/images/wednesday.jpg" alt="Dziś jest środa" />
+        <img
+          src={`${import.meta.env.BASE_URL}images/wednesday.jpg`}
+          alt="Dziś jest środa"
+        />
       </div>
     </div>
   )

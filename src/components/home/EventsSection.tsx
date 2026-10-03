@@ -5,12 +5,14 @@ import ourEventsSvg from '../../assets/images/our-events.svg'
 import pastEventsSvg from '../../assets/images/past-events.svg'
 
 export default function EventsSection() {
-  const renderEventCard = (
-    event: (typeof events)[number]
-  ) => {
+  const renderEventCard = (event: (typeof events)[number]) => {
     const fallback =
       event.imageUrl && !event.imageUrl.endsWith('event1.svg') ? event.imageUrl : null
-    const imageSrc = eventBanners[event.id] ?? fallback
+    const rawImageSrc = eventBanners[event.id] ?? fallback
+    const imageSrc =
+      rawImageSrc && rawImageSrc.startsWith('/')
+        ? `${import.meta.env.BASE_URL}${rawImageSrc.slice(1)}`
+        : rawImageSrc
 
     const cardContent = (
       <>

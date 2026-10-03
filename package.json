@@ -9,6 +9,7 @@
     "build": "tsc -b && vite build",
     "prebuild": "node scripts/fetch-events.mjs",
     "update-events": "node scripts/fetch-events.mjs",
+    "update-members": "node scripts/fetch-members.mjs",
     "lint": "eslint .",
     "format": "prettier --write .",
     "preview": "vite preview"

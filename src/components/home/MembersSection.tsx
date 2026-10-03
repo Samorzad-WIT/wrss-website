@@ -1,17 +1,25 @@
 import { useEffect, useState } from 'react'
 import type { Section } from '../../types'
+import { defaultMembers } from '../../data/members'
 import boardSvg from '../../assets/images/board.svg'
 
 const API_URL = import.meta.env.VITE_API_URL
 
 export default function MembersSection() {
-  const [sections, setSections] = useState<Section[]>([])
+  const [sections, setSections] = useState<Section[]>(defaultMembers)
 
   useEffect(() => {
     if (!API_URL) return
     fetch(`${API_URL}/api/members`)
-      .then((res) => res.json())
-      .then(setSections)
+      .then((res) => {
+        if (!res.ok) throw new Error('Network error')
+        return res.json()
+      })
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setSections(data)
+        }
+      })
       .catch(() => {})
   }, [])
 

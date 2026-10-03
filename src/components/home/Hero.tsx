@@ -12,7 +12,11 @@ export default function Hero() {
           Działamy dla Was z pasją i zaangażowaniem.
         </p>
         <div className="hero-buttons">
-          <a href="/informator.pdf" className="btn-hero-outline" download>
+          <a
+            href={`${import.meta.env.BASE_URL}informator.pdf`}
+            className="btn-hero-outline"
+            download
+          >
             ⬇ Pobierz Informator PDF
           </a>
         </div>

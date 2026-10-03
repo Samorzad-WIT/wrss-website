@@ -7,7 +7,11 @@ import gearIcon from '../assets/images/gear-tools.svg'
 function EventItem({ event }: { event: (typeof events)[number] }) {
   const fallback =
     event.imageUrl && !event.imageUrl.endsWith('event1.svg') ? event.imageUrl : null
-  const imageSrc = eventBanners[event.id] ?? fallback
+  const rawImageSrc = eventBanners[event.id] ?? fallback
+  const imageSrc =
+    rawImageSrc && rawImageSrc.startsWith('/')
+      ? `${import.meta.env.BASE_URL}${rawImageSrc.slice(1)}`
+      : rawImageSrc
   const hasFb = Boolean(event.facebookUrl && !event.facebookUrl.endsWith('/events/'))
 
   const media = imageSrc ? (
