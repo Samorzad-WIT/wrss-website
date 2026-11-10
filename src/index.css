@@ -207,7 +207,6 @@ body {
 }
 
 @media (max-width: 1024px) {
-  /* Na mobile wszystko leży na jednej osi z resztą (wyśrodkowanych) linków */
   .nav-dropdown {
     display: flex;
     flex-direction: column;
