@@ -45,7 +45,26 @@ export default function Navbar() {
 
           <div className="nav-dropdown">
             <Link to="/#narzedzia" onClick={closeMenu} className="btn-nav">
-              ⚙️ Narzędzia ▾
+              <span className="btn-nav-icon" aria-hidden="true">
+                ⚙️
+              </span>
+              Narzędzia
+              <svg
+                className="btn-nav-caret"
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                aria-hidden="true"
+              >
+                <path
+                  d="M1 1l4 4 4-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </Link>
             <div className="nav-dropdown-menu">
               {narzedziaNavItems.map((item) => (
